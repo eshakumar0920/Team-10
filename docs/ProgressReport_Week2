@@ -1,14 +1,15 @@
  Week: 2.21.25 - 2.28.25
 Team leader: Patrick
  
-Patrick: 	4 hours
+Patrick: 	7 hours
     Tasks completed:
 	-Team leader
       	-Install and implement PostgreSQL
       	-Create initial echo server
       	-Create the base of app.py and test_api.py
+	-Create setup github repo structure
     Tasks for next week:
-	-Populate DB w/ test data
+	-Further define DB structure and test features
       	-Research integration of front and back end
       	-Determine algorithms best suited for RNG based rewards
  
