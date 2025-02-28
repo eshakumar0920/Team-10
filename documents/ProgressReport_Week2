@@ -1,14 +1,31 @@
-Team Member contributions:
-  Patrick:
-    Tasks:
-      Team leader
-      Install and implement PostgreSQL
-      Create initial echo server
-      Create the base of app.py and test_api.py
-    Hrs: 3+
-  Esha:
-    
-  Neethu:
-    
-  Sophia:
-    
+ Week: 2.21.25 - 2.28.25
+Team leader: Patrick
+ 
+Patrick: 	4 hours
+    Tasks completed:
+	    -Team leader
+      -Install and implement PostgreSQL
+      -Create initial echo server
+      -Create the base of app.py and test_api.py
+    Tasks for next week:
+	    -Populate DB w/ test data
+      -Research integration of front and back end
+      -Determine algorithms best suited for RNG based rewards
+ 
+Team member #2: 	Total hours worked
+    Tasks completed:
+	Bullet points about the tasks they have worked on.
+    Tasks for next week:
+	list the tasks for next week.
+
+Team member #3: 	Total hours worked
+    Tasks completed:
+	Bullet points about the tasks they have worked on.
+    Tasks for next week:
+	list the tasks for next week.
+
+Team member #4: 	Total hours worked
+    Tasks completed:
+	Bullet points about the tasks they have worked on.
+    Tasks for next week:
+	list the tasks for next week.
