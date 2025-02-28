@@ -18,11 +18,15 @@ Team member #2: 	Total hours worked
     Tasks for next week:
 	list the tasks for next week.
 
-Team member #3: 	Total hours worked
+Sai Neethu Bonagiri: 	5 hours
     Tasks completed:
-	Bullet points about the tasks they have worked on.
+	-Enhanced database design
+	-Set up the backend environment, installed and configured PostgreSQL
+	-Wrote database models and seperated configurations for better modularity.
+	-Conducted research on backend developement best practices. 
     Tasks for next week:
-	list the tasks for next week.
+	-Work on Authentication and user management
+	-Collabrate with the team to align backend progres with frontend requirements. 
 
 Sophia O'Malley: 	5 hours
     Tasks completed:
