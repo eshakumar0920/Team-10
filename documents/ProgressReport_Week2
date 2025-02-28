@@ -3,14 +3,14 @@ Team leader: Patrick
  
 Patrick: 	4 hours
     Tasks completed:
-	    -Team leader
-      -Install and implement PostgreSQL
-      -Create initial echo server
-      -Create the base of app.py and test_api.py
+	-Team leader
+      	-Install and implement PostgreSQL
+      	-Create initial echo server
+      	-Create the base of app.py and test_api.py
     Tasks for next week:
-	    -Populate DB w/ test data
-      -Research integration of front and back end
-      -Determine algorithms best suited for RNG based rewards
+	-Populate DB w/ test data
+      	-Research integration of front and back end
+      	-Determine algorithms best suited for RNG based rewards
  
 Team member #2: 	Total hours worked
     Tasks completed:
