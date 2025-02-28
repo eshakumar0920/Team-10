@@ -24,8 +24,12 @@ Team member #3: 	Total hours worked
     Tasks for next week:
 	list the tasks for next week.
 
-Team member #4: 	Total hours worked
+Sophia O'Malley: 	5 hours
     Tasks completed:
-	Bullet points about the tasks they have worked on.
+	-Organized this weeks sprint in Jira
+	-Researched best techniques for converting Figma to code
+	-Tested builder.io to create the first screen from Figma to React
     Tasks for next week:
-	list the tasks for next week.
+	-Finish converting Figma to code
+	-Debugging the code and adding necessary features
+	-Research how to implement a map to the maps screen
