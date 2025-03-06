@@ -1,6 +1,7 @@
 # models/user.py
 from datetime import datetime
 from . import db
+from .user_activity import UserActivity  # Add this import
 
 class User(db.Model):
     __tablename__ = 'users'
