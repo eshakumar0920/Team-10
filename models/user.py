@@ -17,7 +17,7 @@ class User(db.Model):
     
     # Relationships
     activities = db.relationship('UserActivity', backref='user', lazy='dynamic')
-    participations = db.relationship('Participant', backref='user', lazy='dynamic')
+    participations = db.relationship('Participant', back_populates='user')
     
     def award_xp(self, amount, activity_type, event_id=None, description=None):
         """Award XP to user and check for level up"""
