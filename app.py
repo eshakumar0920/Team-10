@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_cors import CORS
+from flask_migrate import Migrate  # Add this import
 from models import db
 from routes import events_bp
 from config.config import config_by_name
@@ -14,13 +15,15 @@ def create_app(config_name='dev'):
     
     # Initialize extensions
     db.init_app(app)
+    migrate = Migrate(app, db)  # Add this line
     
     # Register blueprints
     app.register_blueprint(events_bp, url_prefix='/api')
     
-    # Create database tables
-    with app.app_context():
-        db.create_all()
+    # Comment out or remove this block when using Flask-Migrate
+    # With Flask-Migrate, you'll use commands instead of auto-creating tables
+    # with app.app_context():
+    #     db.create_all()
         
     return app
 
