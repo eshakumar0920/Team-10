@@ -1,0 +1,28 @@
+# Environment
+venv/
+env/
+.env
+.venv
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Local configuration
+instance/
+.webassets-cache
+.pytest_cache/
+
+# Database
+*.db
+*.sqlite3
+
+# Logs
+logs/
+*.log
