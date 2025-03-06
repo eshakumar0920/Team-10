@@ -11,6 +11,7 @@ sys.path.append(str(Path(__file__).parent))
 BASE_URL = 'http://localhost:5000/api'
 
 # No longer trying to create or find users dynamically
+<<<<<<< HEAD
 
 def test_create_user():
     """Test creating a new user for testing purposes"""
@@ -43,6 +44,8 @@ def test_get_existing_user():
         print(f"Using existing user with ID: {user_id}")
         return user_id
     return None
+=======
+>>>>>>> 2686b95a (Update test_api.py)
 
 def test_create_event():
     """Test creating a new event"""
@@ -110,13 +113,10 @@ def test_leave_event(event_id, user_id):
 
 def run_all_tests():
     """Run all API tests"""
-    # Get an existing user or create a new test user
-    user_id = test_get_existing_user()
-    if not user_id:
-        user_id = test_create_user()
-        if not user_id:
-            print("Failed to get or create a valid user, stopping tests.")
-            return
+    # Use a known valid user ID from your database
+    user_id = 1  # CHANGE THIS to a user ID you know exists in your database
+    print(f"\n=== Using fixed test user ID: {user_id} ===")
+    # Make sure this user exists in your database!
     
     # Create an event
     event_id = test_create_event()
