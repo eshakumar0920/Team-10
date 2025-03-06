@@ -12,6 +12,38 @@ BASE_URL = 'http://localhost:5000/api'
 
 # No longer trying to create or find users dynamically
 
+def test_create_user():
+    """Test creating a new user for testing purposes"""
+    print("\n=== Creating Test User ===")
+    user_data = {
+        "name": "Test User",
+        "email": "testuser@example.com",
+        "password": "password123"  # Add other required fields as needed
+    }
+    
+    response = requests.post(f'{BASE_URL}/users', json=user_data)
+    print(f"Status code: {response.status_code}")
+    
+    if response.status_code == 201:
+        print(f"Created test user: {json.dumps(response.json(), indent=2)}")
+        return response.json().get('id')
+    else:
+        print(f"Failed to create test user: {response.text}")
+        return None
+
+def test_get_existing_user():
+    """Get an existing user to use for tests"""
+    print("\n=== Finding Existing User ===")
+    response = requests.get(f'{BASE_URL}/users')
+    
+    if response.status_code == 200 and response.json():
+        users = response.json()
+        first_user = users[0]
+        user_id = first_user.get('id')
+        print(f"Using existing user with ID: {user_id}")
+        return user_id
+    return None
+
 def test_create_event():
     """Test creating a new event"""
     print("\n=== Testing Event Creation ===")
