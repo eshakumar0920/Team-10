@@ -1,5 +1,4 @@
 #### config/config.py
-```python
 import os
 
 class Config:

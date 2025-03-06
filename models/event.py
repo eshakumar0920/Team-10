@@ -17,7 +17,7 @@ class Event(db.Model):
     organizer_xp_reward = db.Column(db.Integer, default=200)  # XP for organizing
     
     # Update relationship
-    participants = db.relationship('Participant', backref='event', lazy=True)
+    participants = db.relationship('Participant', back_populates='event', lazy=True)
     creator = db.relationship('User', backref=db.backref('created_events', lazy='dynamic'))
     
     def __init__(self, title, description, location, event_date, creator_id, xp_reward=50, organizer_xp_reward=200):

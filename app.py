@@ -3,7 +3,7 @@ from flask_cors import CORS
 from flask_migrate import Migrate  # Add this import
 from models import db
 from routes import events_bp
-from config.config import config_by_name
+from config import config_by_name
 import os
 
 def create_app(config_name='dev'):

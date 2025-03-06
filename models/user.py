@@ -5,7 +5,7 @@ from . import db
 class User(db.Model):
     __tablename__ = 'users'
     
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(64), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(128))
@@ -17,7 +17,7 @@ class User(db.Model):
     
     # Relationships
     activities = db.relationship('UserActivity', backref='user', lazy='dynamic')
-    participations = db.relationship('Participant', backref='user', lazy='dynamic')
+    participations = db.relationship('Participant', back_populates='user')
     
     def award_xp(self, amount, activity_type, event_id=None, description=None):
         """Award XP to user and check for level up"""
