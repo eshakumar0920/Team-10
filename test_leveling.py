@@ -1,7 +1,6 @@
 # test_leveling.py
 from app import create_app
 from models import db, User, Event, Participant, UserActivity
-
 app = create_app('dev')
 
 def test_xp_system():
@@ -21,8 +20,8 @@ def test_xp_system():
         # Mark attendance and award XP
         participant.mark_attended()
         
-        # Check updated XP and level
-        user = User.query.get(user.id)  # Refresh user from database
+        # Check updated XP and level - UPDATED LINE BELOW
+        user = db.session.get(User, user.id)  # Refresh user from database using recommended method
         print(f"After attendance: User {user.username} is at level {user.current_level} with {user.current_xp} XP")
         
         # Award organizer XP
