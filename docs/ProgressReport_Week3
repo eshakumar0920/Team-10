@@ -13,14 +13,15 @@ Sophia O'Malley: 	7 hours
       	-Research integration of front and back end
       	-Determine algorithms best suited for RNG based rewards
  
-Esha Kumar: 	5 hours
+Esha Kumar: 	9 hours
     Tasks completed:
-	- Researched how to convert the Figma into code.
-	- Figured out how to work with the Build.io to convert Figma into React.
-	- Worked on mapping out the features that we plan to work with in this scope.
-	- Planned out the objectives for the next couple of sprints. 
+	- Installed PostgreSQL and tested app.py
+	- Worked on making the Frontend github structure
+	- Figured out how to use Build.io and Loveable
+	- Updated the code for some of the screens in progress as we debug
+	- Connected VScode to github and practiced pushing and testing it.
     Tasks for next week:
-	- Finish converting the Figma to code.
+	- React Native fully set up for testing
 	- Debugging and fixing alignment on React.
 	- Research how to integrate the front-end and back-end long term.
 
