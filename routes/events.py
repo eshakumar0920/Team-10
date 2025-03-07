@@ -14,58 +14,69 @@ from sqlalchemy import or_
 from datetime import datetime
 
 events_bp = Blueprint('events', __name__)
-
 @events_bp.route('/search', methods=['GET'])
 def search_events():
-    try:
-        # Get query parameters
-        query = request.args.get('query', '', type=str)
-        location = request.args.get('location', '', type=str)
-        date_from = request.args.get('date_from', '', type=str)
-        date_to = request.args.get('date_to', '', type=str)
+    # Mock data (simulating events in the database)
+    mock_events = [
+        {
+            'id': 1,
+            'title': 'Python Workshop',
+            'description': 'Learn Python programming',
+            'location': 'Texas',
+            'event_date': '2025-03-10',
+            'creator_id': 1,
+            'created_at': '2025-03-01',
+            'xp_reward': 50,
+            'organizer_xp_reward': 200
+        },
+        {
+            'id': 2,
+            'title': 'JavaScript for Beginners',
+            'description': 'Intro to JavaScript programming',
+            'location': 'California',
+            'event_date': '2025-04-01',
+            'creator_id': 2,
+            'created_at': '2025-03-01',
+            'xp_reward': 50,
+            'organizer_xp_reward': 200
+        }
+    ]
 
-        # Convert datetime.now() to a string format matching the database
-        now_str = datetime.now().strftime("%Y-%m-%d")
+    # Get query parameters
+    query = request.args.get('query', '')
+    location = request.args.get('location')
+    date_from = request.args.get('date_from')
+    date_to = request.args.get('date_to')
 
-        # Start with base query - only show future events
-        events_query = Event.query.filter(Event.event_date >= now_str)
+    # Start with mock events (simulate the filtering from database)
+    filtered_events = mock_events
 
-        # Apply filters conditionally
-        if query:
-            events_query = events_query.filter(or_(
-                Event.title.ilike(f'%{query}%'),
-                Event.description.ilike(f'%{query}%')
-            ))
+    # Apply filters conditionally
+    if query:
+        filtered_events = [event for event in filtered_events if query.lower() in event['title'].lower() or query.lower() in event['description'].lower()]
 
-        if location:
-            events_query = events_query.filter(Event.location.ilike(f'%{location}%'))
+    if location:
+        filtered_events = [event for event in filtered_events if location.lower() in event['location'].lower()]
 
-        # Date filtering with proper string conversion
-        if date_from:
-            try:
-                from_date = datetime.strptime(date_from, "%Y-%m-%d").strftime("%Y-%m-%d")
-                events_query = events_query.filter(Event.event_date >= from_date)
-            except ValueError:
-                return jsonify({"error": "Invalid date_from format. Use YYYY-MM-DD."}), 400
+    # Date filtering
+    if date_from:
+        try:
+            from_date = datetime.fromisoformat(date_from)
+            filtered_events = [event for event in filtered_events if datetime.fromisoformat(event['event_date']) >= from_date]
+        except ValueError:
+            pass
 
-        if date_to:
-            try:
-                to_date = datetime.strptime(date_to, "%Y-%m-%d").strftime("%Y-%m-%d")
-                events_query = events_query.filter(Event.event_date <= to_date)
-            except ValueError:
-                return jsonify({"error": "Invalid date_to format. Use YYYY-MM-DD."}), 400
+    if date_to:
+        try:
+            to_date = datetime.fromisoformat(date_to)
+            filtered_events = [event for event in filtered_events if datetime.fromisoformat(event['event_date']) <= to_date]
+        except ValueError:
+            pass
 
-        # Sort by event date (earliest first)
-        events_query = events_query.order_by(Event.event_date)
+    # Sort by event date (earliest first)
+    filtered_events = sorted(filtered_events, key=lambda x: x['event_date'])
 
-        # Execute query
-        events = events_query.all()
-
-        # Return JSON response
-        return jsonify([event.to_dict() for event in events]), 200
-
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
+    # Return mock filtered events
+    return jsonify(filtered_events)
 
 #"Added event search functionality".
