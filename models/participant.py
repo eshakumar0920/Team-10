@@ -16,8 +16,8 @@ class Participant(db.Model):
     __table_args__ = (db.UniqueConstraint('event_id', 'user_id', name='unique_participant'),)
     
     # Add relationship
-    user = db.relationship('User', backref=db.backref('participations', lazy='dynamic'))
-    event = db.relationship('Event', backref=db.backref('participants', lazy='dynamic'))
+    user = db.relationship('User', back_populates='participations')
+    event = db.relationship('Event', back_populates='participants')
     
     def __init__(self, event_id, user_id):
         self.event_id = event_id
