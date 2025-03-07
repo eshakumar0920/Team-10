@@ -34,12 +34,16 @@ Sai Neethu Bonagiri: 	5 hours
 	-Work on Authentication and user management
 	-Collabrate with the team to align backend progres with frontend requirements. 
 
-Patrick: 	5 hours
+Patrick:	10 hours
     Tasks completed:
-	-Organized this weeks sprint in Jira
-	-Researched best techniques for converting Figma to code
-	-Tested builder.io to create the first screen from Figma to React
+	-Weekly back-end planning w/ Neethu
+	-Added initial leveling system feature w/ tests
+	-Created new models in DB related to leveling system
+	-Helped team setup PostgreSQL on their machines
+	-Created team Discord for better communication
+	-Researched alternative structure for our GitHub
+
     Tasks for next week:
-	-Finish converting Figma to code
-	-Debugging the code and adding necessary features
-	-Research how to implement a map to the maps screen
+	-Further define and implement the leveling system 
+	-Create an intial reward system based upon user levels
+	-Begin any necessary front-end and back-end integration
