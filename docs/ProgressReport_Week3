@@ -24,15 +24,17 @@ Esha Kumar: 	5 hours
 	- Debugging and fixing alignment on React.
 	- Research how to integrate the front-end and back-end long term.
 
-Sai Neethu Bonagiri: 	5 hours
+Sai Neethu Bonagiri: 	7 hours
     Tasks completed:
-	-Enhanced database design
-	-Set up the backend environment, installed and configured PostgreSQL
-	-Wrote database models and seperated configurations for better modularity.
-	-Conducted research on backend developement best practices. 
+	-Implemented search functionality for events, including filters for query, location, date_from, and date_to
+	-Integrated search logic in routes/events.py and tested it using test_search.py 
+	-Successfully filtered events by query
+	-Currently working on resolving the issue with filtering events by other filters
+	-Worked on setting up the code and configuring the local environment.
     Tasks for next week:
-	-Work on Authentication and user management
-	-Collabrate with the team to align backend progres with frontend requirements. 
+	-Investigate and fix the issue with the filters
+	- Test the search functionality thoroughly once the issue is resolved. 
+	-Collabrate with the team to align backend progress with frontend requirements. 
 
 Patrick:	10 hours
     Tasks completed:
