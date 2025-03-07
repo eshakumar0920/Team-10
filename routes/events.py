@@ -24,7 +24,7 @@ def search_events():
     date_to = request.args.get('date_to')
 
     # Start with base query - only show future events
-    events_query = Event.query.filter(Event.event_date >= datetime.now().isoformat())
+    events_query = Event.query.filter(Event.event_date >= datetime.now())
 
     # Apply filters conditionally
     if query:
