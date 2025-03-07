@@ -1,22 +1,28 @@
  Week: 2.21.25 - 2.28.25
 Team leader: Patrick
  
-Patrick: 	4 hours
+Patrick: 	7 hours
     Tasks completed:
 	-Team leader
       	-Install and implement PostgreSQL
       	-Create initial echo server
       	-Create the base of app.py and test_api.py
+	-Create setup github repo structure
     Tasks for next week:
-	-Populate DB w/ test data
+	-Further define DB structure and test features
       	-Research integration of front and back end
       	-Determine algorithms best suited for RNG based rewards
  
-Team member #2: 	Total hours worked
+Esha Kumar: 	5 hours
     Tasks completed:
-	Bullet points about the tasks they have worked on.
+	- Researched how to convert the Figma into code.
+	- Figured out how to work with the Build.io to convert Figma into React.
+	- Worked on mapping out the features that we plan to work with in this scope.
+	- Planned out the objectives for the next couple of sprints. 
     Tasks for next week:
-	list the tasks for next week.
+	- Finish converting the Figma to code.
+	- Debugging and fixing alignment on React.
+	- Research how to integrate the front-end and back-end long term.
 
 Sai Neethu Bonagiri: 	5 hours
     Tasks completed:
