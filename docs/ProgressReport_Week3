@@ -1,0 +1,45 @@
+Week: 2.28.25 - 3.07.25
+Team leader: Patrick
+ 
+Sophia O'Malley: 	7 hours
+    Tasks completed:
+	-Team leader
+      	-Install and implement PostgreSQL
+      	-Create initial echo server
+      	-Create the base of app.py and test_api.py
+	-Create setup github repo structure
+    Tasks for next week:
+	-Further define DB structure and test features
+      	-Research integration of front and back end
+      	-Determine algorithms best suited for RNG based rewards
+ 
+Esha Kumar: 	5 hours
+    Tasks completed:
+	- Researched how to convert the Figma into code.
+	- Figured out how to work with the Build.io to convert Figma into React.
+	- Worked on mapping out the features that we plan to work with in this scope.
+	- Planned out the objectives for the next couple of sprints. 
+    Tasks for next week:
+	- Finish converting the Figma to code.
+	- Debugging and fixing alignment on React.
+	- Research how to integrate the front-end and back-end long term.
+
+Sai Neethu Bonagiri: 	5 hours
+    Tasks completed:
+	-Enhanced database design
+	-Set up the backend environment, installed and configured PostgreSQL
+	-Wrote database models and seperated configurations for better modularity.
+	-Conducted research on backend developement best practices. 
+    Tasks for next week:
+	-Work on Authentication and user management
+	-Collabrate with the team to align backend progres with frontend requirements. 
+
+Patrick: 	5 hours
+    Tasks completed:
+	-Organized this weeks sprint in Jira
+	-Researched best techniques for converting Figma to code
+	-Tested builder.io to create the first screen from Figma to React
+    Tasks for next week:
+	-Finish converting Figma to code
+	-Debugging the code and adding necessary features
+	-Research how to implement a map to the maps screen
