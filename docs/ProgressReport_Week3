@@ -1,0 +1,53 @@
+Week: 2.28.25 - 3.07.25
+Team leader: Sophia
+ 
+Sophia O'Malley: 7 hours
+    Tasks completed:
+	- Team leader
+      	- Converted screens from Figma into React Native
+      	- Debugged screens
+      	- Researched how to organize the front-end
+	- Set up and ran the Flask backend, initialized the database with Flask-Migrate,
+	  and verified API endpoints under /api/
+    Tasks for next week:
+	- Research and implement Mapbox or Leaflet
+      	- Research how to test the front-end screens
+      	- Finish debugging all screens
+ 
+Esha Kumar: 	9 hours
+    Tasks completed:
+	- Installed PostgreSQL and tested app.py
+	- Worked on making the Frontend github structure
+	- Figured out how to use Build.io and Loveable
+	- Updated the code for some of the screens in progress as we debug
+	- Connected VScode to github and practiced pushing and testing it.
+    Tasks for next week:
+	- React Native fully set up for testing
+	- Debugging and fixing alignment on React.
+	- Research how to integrate the front-end and back-end long term.
+
+Sai Neethu Bonagiri: 	7 hours
+    Tasks completed:
+	-Implemented search functionality for events, including filters for query, location, date_from, and date_to
+	-Integrated search logic in routes/events.py and tested it using test_search.py 
+	-Successfully filtered events by query
+	-Currently working on resolving the issue with filtering events by other filters
+	-Worked on setting up the code and configuring the local environment.
+    Tasks for next week:
+	-Investigate and fix the issue with the filters
+	- Test the search functionality thoroughly once the issue is resolved. 
+	-Collabrate with the team to align backend progress with frontend requirements. 
+
+Patrick:	10 hours
+    Tasks completed:
+	-Weekly back-end planning w/ Neethu
+	-Added initial leveling system feature w/ tests
+	-Created new models in DB related to leveling system
+	-Helped team setup PostgreSQL on their machines
+	-Created team Discord for better communication
+	-Researched alternative structure for our GitHub
+
+    Tasks for next week:
+	-Further define and implement the leveling system 
+	-Create an intial reward system based upon user levels
+	-Begin any necessary front-end and back-end integration
