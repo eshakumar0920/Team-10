@@ -102,7 +102,7 @@ def test_organizer_xp():
             print("Test event not found. Run test_data.py first.")
             return
             
-        creator = User.query.get(event.creator_id)
+        creator = db.session.get(User, event.creator_id)
         if not creator:
             print(f"Creator user (ID: {event.creator_id}) not found.")
             return
