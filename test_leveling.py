@@ -1,4 +1,5 @@
 # test_leveling.py
+# The intial basic functionality test created to test attendance marking and xp awarding. -PG
 from app import create_app
 from models import db, User, Event, Participant, UserActivity
 app = create_app('dev')
