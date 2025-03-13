@@ -124,71 +124,105 @@ def test_organizer_xp():
 def test_full_flow():
     """Test a complete user journey through the XP system"""
     with app.app_context():
-        # Create new test users
-        organizer = User(username="test_organizer", email="org@example.com", password_hash="password")
-        attendee = User(username="test_attendee", email="att@example.com", password_hash="password")
+        # Find the highest user ID currently in the database
+        highest_user_id = db.session.query(db.func.max(User.id)).scalar() or 0
+        
+        # Create new test users with explicit IDs
+        organizer = User(
+            id=highest_user_id + 1,  # Explicitly set ID to avoid conflict
+            username="test_organizer", 
+            email="org@example.com", 
+            password_hash="password"
+        )
+        attendee = User(
+            id=highest_user_id + 2,  # Explicitly set ID to avoid conflict
+            username="test_attendee", 
+            email="att@example.com", 
+            password_hash="password"
+        )
         db.session.add(organizer)
         db.session.add(attendee)
         db.session.commit()
         
-        # Create an event
-        event = Event(
-            title="XP System Test Event",
-            description="Testing the full XP system",
-            location="Test Location",
-            event_date="2023-12-31",
-            creator_id=organizer.id,
-            xp_reward=50,
-            organizer_xp_reward=200
-        )
-        db.session.add(event)
-        db.session.commit()
-        
-        print(f"Created event: {event.title} by {organizer.username}")
-        print(f"Organizer initial XP: {organizer.current_xp}")
-        print(f"Attendee initial XP: {attendee.current_xp}")
-        
-        # Register attendee for event
-        participant = Participant(event_id=event.id, user_id=attendee.id)
-        db.session.add(participant)
-        db.session.commit()
-        print(f"Registered attendee for event")
-        
-        # Mark attendance
-        participant.mark_attended()
-        db.session.refresh(attendee)
-        print(f"After attendance: Attendee XP = {attendee.current_xp}")
-        
-        # Award organizer XP
-        event.award_creator_xp()
-        db.session.refresh(organizer)
-        print(f"After organization: Organizer XP = {organizer.current_xp}")
-        
-        # Check user activities
-        attendee_activities = UserActivity.query.filter_by(user_id=attendee.id).all()
-        organizer_activities = UserActivity.query.filter_by(user_id=organizer.id).all()
-        
-        print("\nAttendee activities:")
-        for activity in attendee_activities:
-            print(f"- {activity.activity_type}: {activity.xp_earned} XP, {activity.description}")
-        
-        print("\nOrganizer activities:")
-        for activity in organizer_activities:
-            print(f"- {activity.activity_type}: {activity.xp_earned} XP, {activity.description}")
+        try:
+            # Create an event
+            event = Event(
+                title="XP System Test Event",
+                description="Testing the full XP system",
+                location="Test Location",
+                event_date="2023-12-31",
+                creator_id=organizer.id,
+                xp_reward=50,
+                organizer_xp_reward=200
+            )
+            db.session.add(event)
+            db.session.commit()
             
-        # Clean up test data
-        db.session.delete(participant)
-        
-        for activity in attendee_activities:
-            db.session.delete(activity)
-        for activity in organizer_activities:
-            db.session.delete(activity)
+            print(f"Created event: {event.title} by {organizer.username}")
+            print(f"Organizer initial XP: {organizer.current_xp}")
+            print(f"Attendee initial XP: {attendee.current_xp}")
             
-        db.session.delete(event)
-        db.session.delete(attendee)
-        db.session.delete(organizer)
-        db.session.commit()
-        print("\nTest data cleaned up")
+            # Register attendee for event
+            participant = Participant(event_id=event.id, user_id=attendee.id)
+            db.session.add(participant)
+            db.session.commit()
+            print(f"Registered attendee for event")
+            
+            # Mark attendance
+            participant.mark_attended()
+            db.session.refresh(attendee)
+            print(f"After attendance: Attendee XP = {attendee.current_xp}")
+            
+            # Award organizer XP
+            event.award_creator_xp()
+            db.session.refresh(organizer)
+            print(f"After organization: Organizer XP = {organizer.current_xp}")
+            
+            # Check user activities
+            attendee_activities = UserActivity.query.filter_by(user_id=attendee.id).all()
+            organizer_activities = UserActivity.query.filter_by(user_id=organizer.id).all()
+            
+            print("\nAttendee activities:")
+            for activity in attendee_activities:
+                print(f"- {activity.activity_type}: {activity.xp_earned} XP, {activity.description}")
+            
+            print("\nOrganizer activities:")
+            for activity in organizer_activities:
+                print(f"- {activity.activity_type}: {activity.xp_earned} XP, {activity.description}")
+        
+        finally:
+            # Clean up test data - use try/except to ensure cleanup happens even if test fails
+            try:
+                # Delete activities first (foreign key constraints)
+                activities = UserActivity.query.filter(
+                    (UserActivity.user_id == organizer.id) | 
+                    (UserActivity.user_id == attendee.id)
+                ).all()
+                for activity in activities:
+                    db.session.delete(activity)
+                
+                # Delete participant
+                participants = Participant.query.filter(
+                    (Participant.user_id == organizer.id) | 
+                    (Participant.user_id == attendee.id)
+                ).all()
+                for p in participants:
+                    db.session.delete(p)
+                
+                # Delete the event
+                if 'event' in locals() and event.id:
+                    event_to_delete = Event.query.get(event.id)
+                    if event_to_delete:
+                        db.session.delete(event_to_delete)
+                
+                # Delete the test users
+                db.session.delete(organizer)
+                db.session.delete(attendee)
+                db.session.commit()
+                print("\nTest data cleaned up")
+            except Exception as e:
+                print(f"Error during cleanup: {e}")
+                db.session.rollback()
 
 if __name__ == "__main__":
     print("\n--- Testing Level Up ---")
