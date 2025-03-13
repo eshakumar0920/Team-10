@@ -211,7 +211,7 @@ def test_full_flow():
                 
                 # Delete the event
                 if 'event' in locals() and event.id:
-                    event_to_delete = Event.query.get(event.id)
+                    event_to_delete = db.session.get(Event, event.id)
                     if event_to_delete:
                         db.session.delete(event_to_delete)
                 
