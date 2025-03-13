@@ -31,6 +31,7 @@ def test_xp_system():
         # Retrieve test user and event from the database
         user = User.query.filter_by(username="testuser1").first()
         event = Event.query.filter_by(title="Test Event 2").first()
+<<<<<<< HEAD
        
         # Verify test data exists before proceeding
         if not user or not event:
@@ -45,20 +46,41 @@ def test_xp_system():
        
         # Clean up any existing participant records for this user and event
         # This ensures the test starts with a clean slate
+=======
+        
+        if not user or not event:
+            print("Test data not found. Run test_data.py first.")
+            return
+        
+        # Reset the user's XP to 0 for testing
+        user.current_xp = 0
+        user.current_level = 1
+        db.session.commit()
+        
+        # Delete any existing participant record to start fresh
+>>>>>>> 84abf27f (Debug test_leveling)
         existing_participant = Participant.query.filter_by(user_id=user.id, event_id=event.id).first()
         if existing_participant:
             db.session.delete(existing_participant)
             db.session.commit()
+<<<<<<< HEAD
            
         # Also remove any activity records related to this user and event
         # to ensure accurate activity tracking during the test
         existing_activities = UserActivity.query.filter_by(
             user_id=user.id,
+=======
+            
+        # Delete any existing activity records for this user/event
+        existing_activities = UserActivity.query.filter_by(
+            user_id=user.id, 
+>>>>>>> 84abf27f (Debug test_leveling)
             related_event_id=event.id
         ).all()
         for activity in existing_activities:
             db.session.delete(activity)
         db.session.commit()
+<<<<<<< HEAD
        
         # Create a new participant record to associate the user with the event
         # This simulates a user registering for an event
@@ -67,24 +89,46 @@ def test_xp_system():
         db.session.commit()
        
         # Log the initial state of the user for comparison
+=======
+        
+        # Create a new participant record
+        participant = Participant(event_id=event.id, user_id=user.id)
+        db.session.add(participant)
+        db.session.commit()
+        
+        # Check initial XP and level
+>>>>>>> 84abf27f (Debug test_leveling)
         print(f"Initial state: User {user.username} is at level {user.current_level} with {user.current_xp} XP")
        
         # Simulate the user attending the event and being awarded XP
         # This calls the mark_attended method which should award attendance XP
         participant.mark_attended()
+<<<<<<< HEAD
        
         # Refresh the user object to get updated XP and level values from the database
+=======
+        
+        # Refresh user from database to get updated values
+>>>>>>> 84abf27f (Debug test_leveling)
         db.session.refresh(user)
         print(f"After attendance: User {user.username} is at level {user.current_level} with {user.current_xp} XP")
        
         # Simulate awarding XP to the event creator/organizer
         # This tests the organizer reward system
         event.award_creator_xp()
+<<<<<<< HEAD
        
         # Refresh user data again to see any additional changes
         db.session.refresh(user)
        
         # Display all user activities to verify proper activity tracking
+=======
+        
+        # Refresh user again
+        db.session.refresh(user)
+        
+        # Check user activities
+>>>>>>> 84abf27f (Debug test_leveling)
         activities = UserActivity.query.filter_by(user_id=user.id).all()
         print(f"\nUser activities for {user.username}:")
         for activity in activities:
