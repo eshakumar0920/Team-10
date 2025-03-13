@@ -1,4 +1,5 @@
 # test_leveling.py
+<<<<<<< HEAD
 """
 XP and Leveling System Integration Test
 
@@ -20,6 +21,11 @@ from app import create_app  # Import the application factory function
 from models import db, User, Event, Participant, UserActivity  # Import database models
 
 # Create a test application instance with development configuration
+=======
+# The intial basic functionality test created to test attendance marking and xp awarding. -PG
+from app import create_app
+from models import db, User, Event, Participant, UserActivity
+>>>>>>> c2a661cd (Update test_leveling and create test_xp_system)
 app = create_app('dev')
 
 def test_xp_system():
