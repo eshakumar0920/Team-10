@@ -7,7 +7,7 @@ BASE_URL = 'http://localhost:5000/api/search'
 def test_search_events_by_query():
     """Test searching events by title"""
     print("\n=== Testing Search Events by Query ===")
-    params = {'query': 'Python'}
+    params = {'query': 'Data'}
     response = requests.get(BASE_URL, params=params)
     print(f"Status code: {response.status_code}")
     print(f"Response: {json.dumps(response.json(), indent=2)}")
@@ -15,7 +15,7 @@ def test_search_events_by_query():
 def test_search_events_by_location():
     """Test searching events by location"""
     print("\n=== Testing Search Events by Location ===")
-    params = {'location': 'New York'}
+    params = {'location': ' Hub'}
     response = requests.get(BASE_URL, params=params)
     print(f"Status code: {response.status_code}")
     print(f"Response: {json.dumps(response.json(), indent=2)}")
@@ -23,7 +23,7 @@ def test_search_events_by_location():
 def test_search_events_by_date_range():
     """Test searching events within a specific date range"""
     print("\n=== Testing Search Events by Date Range ===")
-    params = {'date_from': '2025-03-01', 'date_to': '2025-03-10'}
+    params = {'date_from': '2025-03-16', 'date_to': '2025-03-25'}
     response = requests.get(BASE_URL, params=params)
     print(f"Status code: {response.status_code}")
     print(f"Response: {json.dumps(response.json(), indent=2)}")
