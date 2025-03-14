@@ -14,15 +14,14 @@ Sophia O'Malley: 10 hours
  
 Esha Kumar: 	10 hours
     Tasks completed:
-	- Installed PostgreSQL and tested app.py
-	- Worked on making the Frontend github structure
-	- Figured out how to use Build.io and Loveable
+	- Debugged screens and implemented the lobby
+	- Worked on organizing frontend on github
+	- Used Loveable and expo to make the screens organized and set up
 	- Updated the code for some of the screens in progress as we debug
-	- Connected VScode to github and practiced pushing and testing it.
+	- Worked on making interactive screens
     Tasks for next week:
-	- React Native fully set up for testing
-	- Debugging and fixing alignment on React.
-	- Research how to integrate the front-end and back-end long term.
+	- Finish up the screens and add all the elements
+	- Research how to best integrate after front end is built fully
 
 Sai Neethu Bonagiri: 	10 hours
     Tasks completed:
