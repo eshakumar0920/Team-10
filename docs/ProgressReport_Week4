@@ -4,15 +4,13 @@ Team leader: Sophia
 Sophia O'Malley: 10 hours
     Tasks completed:
 	- Team leader
+	- Debugged screens
       	- Converted screens from Figma into React Native
-      	- Debugged screens
-      	- Researched how to organize the front-end
-	- Set up and ran the Flask backend, initialized the database with Flask-Migrate,
-	  and verified API endpoints under /api/
+      	- Used Expo Go to make screens interactive
+	- Researched ways to use Expo Go to cover every part of our plan
     Tasks for next week:
-	- Research and implement Mapbox or Leaflet
-      	- Research how to test the front-end screens
-      	- Finish debugging all screens
+	-  Make all the screen interactive
+      	- Research how to gameify some of the screens by using Expo Go
  
 Esha Kumar: 	10 hours
     Tasks completed:
