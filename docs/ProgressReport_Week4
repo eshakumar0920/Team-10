@@ -40,13 +40,15 @@ Sai Neethu Bonagiri: 	10 hours
 Patrick:	10 hours
     Tasks completed:
 	-Weekly back-end planning w/ Neethu
-	-Added initial leveling system feature w/ tests
-	-Created new models in DB related to leveling system
-	-Helped team setup PostgreSQL on their machines
-	-Created team Discord for better communication
-	-Researched alternative structure for our GitHub
+	-Debugged and fixed initial leveling system test
+	-Created additional test for leveling system - test_xp_system.py
+	-Utilized and learned more about proper use of flask migrate
+	-Finished setting up new branch structure
+	-Added detailed comments to some existing code for team clarity
+	-Started a guides and tips document for team to reference
 
     Tasks for next week:
-	-Further define and implement the leveling system 
-	-Create an intial reward system based upon user levels
-	-Begin any necessary front-end and back-end integration
+	-Integrate leveling system into feature/backend-main branch 
+	-Determine w/ frontend most necessary features so we can plan out future testing
+	-Finish create/join events feature
+	-Determine proper reward system based upon leveling
