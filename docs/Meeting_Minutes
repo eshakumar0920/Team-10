@@ -26,3 +26,26 @@ Team Leader: Patrick
     -Continue to add tasks to Jira board to plan ahead
     -Add bullet points on future Meeting Minutes
     -Create separate directory (called Documents) for Meeting Minutes and Weekly Progress Reports
+
+Week 2 - 2.28.25
+Attendees: TA Thenn, Team 10 (entire team)
+Note Taker: Sophia
+Team Leader: Patrick
+  Comments:
+    - Format for presenting:
+    - Tasks done in the past few weeks
+    - High level overview
+    - Research: Show him how you're researching (ex: playing around with an API and showing the input & output)
+    - at the end show him the progress report
+    - Ngrok VM frontend and backend simultaneously 
+    - Maybe use UTD virtual machine (runs nonstop, free, setup infrastructure)
+    - Research postgres sql commands
+    - Installing an emulator like Android studio, XCode, or local machine for testing out application
+    - Update in proposal plan from React to React Native
+    - MapBox open source map API for map screen
+  TODO:
+    - Middle of next week send TA message on virtual machine decision
+    - Show database tables by next week
+    - Upload draw.io diagrams to github
+    - Work 7- 10 hrs closer to 8hrs
+
