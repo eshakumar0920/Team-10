@@ -1,4 +1,4 @@
-Week: 2.28.25 - 3.07.25
+Week: 3.07.25 - 3.14.25
 Team leader: Sophia
  
 Sophia O'Malley: 10 hours
@@ -28,15 +28,17 @@ Esha Kumar: 	10 hours
 
 Sai Neethu Bonagiri: 	10 hours
     Tasks completed:
-	-Implemented search functionality for events, including filters for query, location, date_from, and date_to
-	-Integrated search logic in routes/events.py and tested it using test_search.py 
-	-Successfully filtered events by query
-	-Currently working on resolving the issue with filtering events by other filters
-	-Worked on setting up the code and configuring the local environment.
+	- Implemented the event search functionality, including filters for query, location, date_from, and date_to.
+	- Integrated search logic in routes/events.py
+	- Addressed migration issues and ensured that changes in the models were properly reflected in the database schema
+	- Verified the event search functionality using test_search.py, ensuring that the filters (query, location, date range) work correctly.
+	- Debugged and fixed the location filtering issue by aligning database values to return accurate results.
+
     Tasks for next week:
-	-Investigate and fix the issue with the filters
-	- Test the search functionality thoroughly once the issue is resolved. 
-	-Collabrate with the team to align backend progress with frontend requirements. 
+	- Commit and push the final changes to GitHub.
+	- Continue thorough testing to ensure no regressions in the event search functionality.
+	- Resolve any merge conflicts before integrating changes with the main branch.
+	- Collaborate with the frontend team to align backend functionality with their requirements for integration.
 
 Patrick:	10 hours
     Tasks completed:
