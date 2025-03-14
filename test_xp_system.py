@@ -79,21 +79,24 @@ def test_level_up():
         # Check initial level
         print(f"Initial: User {user.username} is at level {user.current_level} with {user.current_xp} XP")
         
-        # Award exactly enough XP to reach level 2 (should be 100 XP per test_data.py)
+        # Test Case 1: Award exactly enough XP to reach level 2
+        # The level threshold is defined as 100 XP in test_data.py
         user.award_xp(amount=100, activity_type='test_activity', description="Test level up")
-        db.session.refresh(user)
+        db.session.refresh(user)  # Refresh user data from database
         
-        # Check level up
+        # Verify level up occurred correctly
         print(f"After 100 XP: User {user.username} is at level {user.current_level} with {user.current_xp} XP")
         
-        # Award more XP, but not enough to reach level 3
+        # Test Case 2: Award more XP, but not enough to reach level 3
+        # This tests partial progress toward the next level
         user.award_xp(amount=150, activity_type='test_activity', description="More test XP")
         db.session.refresh(user)
         
-        # Check level again
+        # Verify user has more XP but hasn't leveled up again
         print(f"After 250 XP: User {user.username} is at level {user.current_level} with {user.current_xp} XP")
         
-        # Award enough to reach level 3
+        # Test Case 3: Award enough to reach level 3
+        # This confirms the level up system works continuously as more XP is gained
         user.award_xp(amount=50, activity_type='test_activity', description="Final test XP")
         db.session.refresh(user)
         
@@ -235,10 +238,11 @@ def test_organizer_xp():
         # Reset creator's XP
         initial_xp = creator.current_xp
         
-        # Award organizer XP
+        # Display the expected organizer XP reward
         print(f"Event organizer XP reward: {event.organizer_xp_reward}")
         print(f"Before: Creator {creator.username} has {creator.current_xp} XP")
         
+        # Award XP to the organizer (creator)
         result = event.award_creator_xp()
         db.session.refresh(creator)
         
