@@ -23,8 +23,13 @@ def search_events():
     date_from = request.args.get('date_from')
     date_to = request.args.get('date_to')
 
-    # Start with base query - only show future events
-    events_query = Event.query.filter(Event.event_date >= datetime.now().isoformat())
+    # Start with base query
+    events_query = Event.query
+
+    # Filter for future events only if no date range is specified
+    if not date_from and not date_to:
+        current_time = datetime.now().isoformat()
+        events_query = events_query.filter(Event.event_date >= current_time)
 
     # Apply filters conditionally
     if query:
@@ -39,15 +44,15 @@ def search_events():
     # Date filtering
     if date_from:
         try:
-            from_date = datetime.fromisoformat(date_from)
-            events_query = events_query.filter(Event.event_date >= from_date.isoformat())
+            from_date = datetime.fromisoformat(date_from).isoformat()
+            events_query = events_query.filter(Event.event_date >= from_date)
         except ValueError:
             pass
 
     if date_to:
         try:
-            to_date = datetime.fromisoformat(date_to)
-            events_query = events_query.filter(Event.event_date <= to_date.isoformat())
+            to_date = datetime.fromisoformat(date_to).isoformat()
+            events_query = events_query.filter(Event.event_date <= to_date)
         except ValueError:
             pass
 
@@ -56,6 +61,10 @@ def search_events():
 
     # Execute query
     events = events_query.all()
+
+     # Check if no events were found
+    if not events:
+        return jsonify({"message": "No events found matching your criteria."}), 200
     
     # Return JSON response
     return jsonify([event.to_dict() for event in events])
