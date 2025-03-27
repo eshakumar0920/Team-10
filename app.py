@@ -3,6 +3,7 @@ from flask_cors import CORS
 from flask_migrate import Migrate  # Add this import
 from models import db
 from routes import events_bp
+from routes.auth import auth_bp #Import the new authentication blueprint
 from config import config_by_name
 import os
 
@@ -19,6 +20,7 @@ def create_app(config_name='dev'):
     
     # Register blueprints
     app.register_blueprint(events_bp, url_prefix='/api')
+    app.register_blueprint(auth_bp, url_prefix='/auth')  # Register auth routes
     
     # Comment out or remove this block when using Flask-Migrate
     # With Flask-Migrate, you'll use commands instead of auto-creating tables
