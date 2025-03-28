@@ -1,8 +1,8 @@
 from flask import Flask
 from flask_cors import CORS
-from flask_migrate import Migrate  # Add this import
-from models import db
-from routes import events_bp
+from flask_migrate import Migrate
+from models import db, initialize_default_data
+from routes import events_bp, leveling_bp
 from config import config_by_name
 import os
 
@@ -15,15 +15,19 @@ def create_app(config_name='dev'):
     
     # Initialize extensions
     db.init_app(app)
-    migrate = Migrate(app, db)  # Add this line
+    migrate = Migrate(app, db)
     
     # Register blueprints
     app.register_blueprint(events_bp, url_prefix='/api')
+    app.register_blueprint(leveling_bp, url_prefix='/api/leveling')
     
-    # Comment out or remove this block when using Flask-Migrate
-    # With Flask-Migrate, you'll use commands instead of auto-creating tables
-    # with app.app_context():
-    #     db.create_all()
+    # Initialize default data after app context is available
+    with app.app_context():
+        # Uncomment the following line when using Flask-Migrate for the first time
+        # db.create_all()
+        
+        # Comment this out temporarily while migrating
+        initialize_default_data()
         
     return app
 
