@@ -23,10 +23,12 @@ Sai Neethu Bonagiri: 12 hours
   Tasks for next week:
 	    - Continued Working on user authentication:
 	    	- collabrate with the frontend team to update the final URL in Supabase once the frontend is deployed.
-		- Research/learn more about authentication and access tokens (further steps after authentication) 
+		- Research/learn more about authentication and access tokens (JWT)
 		- Merge the search functionality and authentication into backend main and ensure everything is smoothly intergrating 
-		- Investigate third party authentication for our project 
+		- Investigate third party authentication for our project (DUO)
+		- Next steps after authentication
 	    - Test other functionalities as required. 
+	    - Update documentation of the Authentication as needed. 
 	    
  
 Esha Kumar: 	10 hours
