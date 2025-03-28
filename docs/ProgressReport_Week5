@@ -63,24 +63,20 @@ Sophia O'Malley: 	10 hours
 	    - 
 	    - 
 
-Patrick:	 hours
+Patrick:	10 hours
   Tasks completed:
 	-Research and Design Leveling and Reward Systems
-	-Implemented Leveling System (Coding and Debugging)
+	-Implemented Leveling System (coding and debugging)
 		-Updated all related models
-			+Level 	- Now includes detailed level progression w/ tiers
-				- DB migration w/ new columns to the existing table
-			+User - Added weeky activity tracking, semester xp resets, tier progression
-			+UserInteraction(new) - Track user-user interactions for bonus XP modifier
-			+LootBox(new) - Manages rewards at level ups and rewards for max-lvl users
-			+Semester(new) - Manages xp reset at beginning of new semester
+		-Created new models
 		-Created API Endpoints
-			+/api/leveling/users/<id>/progress - Get user level progress details
-			+/api/leveling/levels - Get all level definitions
-			+/api/leveling/users/<id>/lootboxes - Get user's loot boxes
-			+/api/leveling/users/<id>/lootboxes/<id>/open - Open a loot box
-			+/api/leveling/admin/semester - Start a new semester (admin only)
 	-Created check_db_user.py to help debug Flask-migrate and other DB related issues
+	-Implemented Reward System (coding and debugging)
+		-Updated all related Models
+		-Created new Models
+		-Created helper class for processing rewards
+		-Created API Endpoints								
+	-Research and plan integration w/ frontend for rewards and leveling system
 
   Tasks for next week:
 	    -Finish testing Leveling and Reward Systems
