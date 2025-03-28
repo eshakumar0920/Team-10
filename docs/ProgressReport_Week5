@@ -1,15 +1,33 @@
 Week: 03.14.25 - 03.27.25
 Team leader: Sai Neethu Bonagiri
  
-Sai Neethu Bonagiri: 10 hours
+Sai Neethu Bonagiri: 12 hours
   Tasks completed:
 	    - Team leader
-	    -
-	    -
+	    - Researched about Supabase for authentication 
+	    - Installed and configured Supabase in the Flask app.
+	    - Created a Supabase project, set up the authentication, and obtained API credentials (Project URL and anon/Public key)
+	    - Configured the config.py file for Supabase
+	    - Disable email confirmation temporarily, but noted that it should be re-enabled for best practices once the integration is complete.
+	    - Created and tested test_supabase.py to test connection to Supabase from Flask app 
+	    - Added the redirect URL as localhost URL and will update it to the frontend URL when deployed
+	    - Created auth.py where for user registration, login and verification 
+	    - Tested auth.py by creating test_auth.py to verify user registration and login functionality(successfully tested with email verification).
+	    - Fixed issues with user registration, login, and email format errors in the testing flow
+	    - Implemented error handling for user registration and login to display relevant error messages(e.g., invalid email format, user already registered).
+	    - Successfully tested the registration and login process, including handling duplicate user registration.
+	    - Wrote documentation of the process I did for future reference. 
+	    - I ensured each step aligned with the project requirements	
 
+	    - Verified that the Search functionality is case insensitive
   Tasks for next week:
-	    - 
-      - 
+	    - Continued Working on user authentication:
+	    	- collabrate with the frontend team to update the final URL in Supabase once the frontend is deployed.
+		- Research/learn more about authentication and access tokens (further steps after authentication) 
+		- Merge the search functionality and authentication into backend main and ensure everything is smoothly intergrating 
+		- Investigate third party authentication for our project 
+	    - Test other functionalities as required. 
+	    
  
 Esha Kumar: 	10 hours
   Tasks completed:
