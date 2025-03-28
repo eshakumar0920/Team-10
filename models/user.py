@@ -34,6 +34,7 @@ class User(db.Model):
     activities = db.relationship('UserActivity', backref='user', lazy='dynamic')
     participations = db.relationship('Participant', back_populates='user')
     loot_boxes = db.relationship('LootBox', backref='user', lazy='dynamic')
+    rewards = db.relationship('UserReward', backref='user', lazy='dynamic')  # Add rewards relationship
     
     def calculate_activity_bonus(self):
         """Calculate the weekly activity bonus multiplier"""
@@ -214,27 +215,10 @@ class User(db.Model):
     
     def award_level_up_loot_box(self, previous_level):
         """Award a loot box for leveling up"""
-        from .loot_box import LootBoxType, LootBox
+        from .reward_system import RewardSystem
         
-        # Determine tier based on new level
-        from .level import Level
-        current_level_info = Level.query.filter_by(level_number=self.current_level).first()
-        
-        if current_level_info:
-            # Use tier from level if available, otherwise default to 1
-            tier = 1
-            if hasattr(current_level_info, 'tier') and current_level_info.tier is not None:
-                tier = current_level_info.tier
-            
-            # Find appropriate tier loot box
-            loot_box_type = LootBoxType.query.filter_by(tier=tier).first()
-            if loot_box_type:
-                new_loot_box = LootBox(
-                    user_id=self.id,
-                    type_id=loot_box_type.id,
-                    awarded_for=f"level_up_to_{self.current_level}"
-                )
-                db.session.add(new_loot_box)
+        # Use the reward system to award the loot box based on level
+        RewardSystem.award_loot_box_for_level_up(self.id, self.current_level, "level_up")
     
     def award_max_level_loot_box(self):
         """Award a loot box for event participation at max level"""
@@ -249,6 +233,22 @@ class User(db.Model):
                 awarded_for="max_level_event_participation"
             )
             db.session.add(new_loot_box)
+    
+    def get_equipped_reward(self):
+        """Get the currently equipped reward (profile image)"""
+        from .reward import UserReward
+        
+        equipped = UserReward.query.filter_by(user_id=self.id, is_equipped=True).first()
+        return equipped
+    
+    def equip_reward(self, reward_id):
+        """Equip a reward as the user's profile image"""
+        from .reward import UserReward
+        
+        reward = UserReward.query.filter_by(id=reward_id, user_id=self.id).first()
+        if reward:
+            return reward.equip()
+        return False
     
     def reset_semester_xp(self, semester_name):
         """Reset user's XP for a new semester"""

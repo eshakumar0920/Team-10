@@ -31,6 +31,9 @@ class LootBox(db.Model):
     opened_at = db.Column(db.DateTime, nullable=True)
     awarded_for = db.Column(db.String(100), nullable=True)  # e.g., "level_up", "event_participation"
     
+    # Relationship with rewards (added relationship)
+    rewards = db.relationship('UserReward', backref='loot_box', lazy='dynamic')
+    
     def __repr__(self):
         status = "Opened" if self.is_opened else "Unopened"
         return f'<LootBox {status} for user_id={self.user_id}>'
@@ -38,12 +41,13 @@ class LootBox(db.Model):
     def open(self):
         """Opens the loot box and awards its contents"""
         if not self.is_opened:
-            self.is_opened = True
-            self.opened_at = datetime.utcnow()
+            from .reward_system import RewardSystem
             
-            # TODO: Logic to determine and award loot box contents
-            # This could involve creating records in another table like user_items
+            # Use the reward system to process the opening
+            user_reward, error = RewardSystem.process_loot_box_opening(self.id)
             
-            db.session.commit()
+            if error:
+                return False
+                
             return True
         return False
