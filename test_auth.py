@@ -6,7 +6,7 @@ BASE_URL = "http://localhost:5000/auth"
 def test_register():
     """Test user registration"""
     print("\n=== Testing User Registration ===")
-    data = {"email": "test3user@gmail.com", "password": "password12311"}
+    data = {"email": "test5user@example.com", "password": "password12311"}
     response = requests.post(f"{BASE_URL}/register", json=data)
     print(f"Status code: {response.status_code}")
     print(f"Response: {json.dumps(response.json(), indent=2)}")
@@ -14,7 +14,7 @@ def test_register():
 def test_login():
     """Test user login"""
     print("\n=== Testing User Login ===")
-    data = {"email": "test3user@gmail.com", "password": "password12311"}
+    data = {"email": "test10user@gmail.com", "password": "password12311"}
     response = requests.post(f"{BASE_URL}/login", json=data)
     print(f"Status code: {response.status_code}")
     print(f"Response: {json.dumps(response.json(), indent=2)}")

@@ -61,15 +61,37 @@ def login():
             "email": email, 
             "password": password
         })
-
+        #print("Login Successful")
         # Access the access token from the session attribute
         access_token = response.session.access_token
-
-        return jsonify({"access_token": access_token}), 200
+       # print(f"Login successful for user {email}")
+        #return jsonify({"access_token": access_token}), 200
+        return jsonify({
+            "message": "Login successful",
+            "email": email,
+            "access_token": access_token
+        }), 200
     except Exception as e:
         # More robust error handling
-        print(f"Login error: {str(e)}")
-        return jsonify({"error": str(e)}), 401
+        #print(f"Login error: {str(e)}")
+       # return jsonify({"error": str(e)}), 401
+        error_message = str(e)
+
+        if "Invalid login credentials" in error_message:
+            return jsonify({
+                "error": "Invalid email or password",
+                "message": "Login failed"
+            }), 401
+        elif "user not found" in error_message.lower():
+            return jsonify({
+                "error": "User not found",
+                "message": "No account exists with this email"
+            }), 404
+        else:
+            return jsonify({
+                "error": error_message,
+                "message": "Login failed"
+            }), 401
 
 @auth_bp.route("/verify", methods=["GET"])
 def verify():
