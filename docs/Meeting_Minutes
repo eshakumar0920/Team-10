@@ -60,6 +60,29 @@ Week 4 - 3.07.25
     - Front end move to react native locally
     - Have more to demo next time
 
+Week 5 - 03.14.25
+  Attendees: TA Thenn, Team 10 (entire team)
+  Note Taker: Esha
+  Team Leader: Sai Neethu Bonagiri
+  Comments:
+    - Need to finalize frontend screens based on Figma designs to ensure smooth integration.
+    - Look into loveable for more features
+    - Descision on authentication: Flask login vs Firebase(Firebase preferred), but also consider Auth0 and Supabase
+    - QR code check-in system similar to the UTD app - need to finalize approach
+    - Ensure search filter functionality is not case-senstive. 
+    - Need to plan the leveling system(25 levels) and determine how it will display.
+    - Consistent Jira updates required. 
+  
+  TO DO: 
+    - Create remaining screens based on Figma designs.
+    - Integrate Loveable with ExpoGo.
+    - Implement 25 levels for students based on event attendance.
+    - Set up a QR code check-in system(or research about it)
+    - Sketch/design the leveling system screen.
+    - Implement event creation and sorting by category
+    - Ensure search functionality is not case-sensitive. 
+    - Decide between Flask login, Firebase(preferred), Supabase, or Auth0
+    - Update Jira Weekly.
 
 
 
