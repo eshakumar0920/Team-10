@@ -33,14 +33,20 @@ Sai Neethu Bonagiri: 12 hours
  
 Esha Kumar: 	10 hours
   Tasks completed:
-	    - 
-	    - 
-  	  - 
-  	  - 
-  	  - 
+	  - Finished developing screens adding additional features
+		- Added meetups page
+		- Student check in for meetups
+		- Leveling system
+		- Lobby for meetups
+		- Overall ways to make the app more interactive ex. adding the usernames with meetup creation
+		- As a team discussed what else we can teak and add.
+          - Researched Supabase for integration and how to do the verification
+  	  - Debugged features and added some extra features for the screens
+  	  - Looked into where to insert APIs for integration.
+  	  - Added the QR code scanning in the app for students to check into events.	
   Tasks for next week:
-  	  - 
-  	  - 
+  	  - Work on integration into supabase
+  	  - Look at how to incorportate the leveling system
 
 Sophia O'Malley: 	10 hours
   Tasks completed:
