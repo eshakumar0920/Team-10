@@ -14,7 +14,7 @@ def test_register():
 def test_login():
     """Test user login"""
     print("\n=== Testing User Login ===")
-    data = {"email": "test10user@gmail.com", "password": "password12311"}
+    data = {"email": "test5user@gmail.com", "password": "password12311"}
     response = requests.post(f"{BASE_URL}/login", json=data)
     print(f"Status code: {response.status_code}")
     print(f"Response: {json.dumps(response.json(), indent=2)}")
