@@ -17,10 +17,16 @@ Esha Kumar: 	10 hours
 
 Sophia O'Malley: 	10 hours
  Tasks completed:
-	    - 
+	- Researched how to integrate frontend and backend using Supabase
+	- Made a few adujustments to the frontend
+	- Worked and debugged the Leaflet.js map 
+	- Helped connect Supabase to the fronend
+	- Made a few adjustments to the frontend UI for better responsiveness
 
   Tasks for next week:
-	    - 
+	    - Continue debugging Leaflet.js API (focus on user location and dynamic markers)
+	    - Collaborate with backend teammate to streamline data flow between components
+	    - Meet with backend team to align on any changes to API responses
 
 Patrick:	10 hours
   Tasks completed:
