@@ -11,9 +11,15 @@ Sai Neethu Bonagiri: 10 hours
  
 Esha Kumar: 	10 hours
   Tasks completed:
-	  - 	
+	  - Connected the frontend to Supabase.
+	  - Read/Write access to analytics logs, auth configurations, SSO providers, Postgres settings, SQL snippets, SSL enforcement, and TypeScript schema.
+	  - Read access to custom and vanity domains.
+	  - Read/Write access to edge functions, environments/branches, metadata, network restrictions/bans, PostgREST settings, API keys, secrets, pgsodium configs, and storage.
+	  - Read access to the organization and its members.
   Tasks for next week:
-  	  - 
+  	  - Finish making the scripts for the features and functionality
+          - Work with backend to add the specific APIs and storing the data
+	  - Figure out how to use Supabase to store everything and be able to demo later.
 
 Sophia O'Malley: 	10 hours
  Tasks completed:
