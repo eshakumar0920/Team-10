@@ -92,7 +92,7 @@ def login():
                 "error": error_message,
                 "message": "Login failed"
             }), 401
-
+'''
 @auth_bp.route("/verify", methods=["GET"])
 def verify():
     token = request.headers.get("Authorization")
@@ -104,13 +104,49 @@ def verify():
         response = supabase.auth.get_user(token)
         
         # Access user information directly from the response
-        return jsonify(response.user.model_dump()), 200
+        #return jsonify(response.user.model_dump()), 200
+        if response.get("error"):
+            return jsonify({"error": response.error.message}), 401
+            # Handle the case where there's an error in the response
+            #return jsonify({"error": response["error"]["message"]}), 401
+            
+        user_data = { 
+            "id": response.user.id,  # Access user ID
+            "email": response.user.email,  # Access user email
+            "created_at": response.user.created_at  # Access user creation date
+        }
+        return jsonify(user_data), 200  # Return user data as JSON
     except Exception as e:
         print(f"Verification error: {str(e)}")
         return jsonify({"error": str(e)}), 401
-    '''
-    response = supabase.auth.get_user(token)
-    if "error" in response:
-        return jsonify({"error": response["error"]["message"]}), 401
+   
+'''
 
-    return jsonify(response["user"]), 200 '''
+@auth_bp.route("/verify", methods=["GET"])
+def verify():
+    token = request.headers.get("Authorization")
+    if not token:
+        return jsonify({"error": "Missing token"}), 401
+
+    try:
+        # Use .get_user() method correctly
+        response = supabase.auth.get_user(token)
+
+        # Check if there's an error directly in the response
+        if hasattr(response, 'error') and response.error:
+            return jsonify({"error": response.error.message}), 401
+        
+        # Ensure response.user exists before trying to access its attributes
+        if hasattr(response, 'user'):
+            user_data = {
+                "id": response.user.id,  # Access user ID
+                "email": response.user.email,  # Access user email
+                "created_at": response.user.created_at  # Access user creation date
+            }
+            return jsonify(user_data), 200  # Return user data as JSON
+        else:
+            return jsonify({"error": "User not found"}), 404
+
+    except Exception as e:
+        print(f"Verification error: {str(e)}")
+        return jsonify({"error": str(e)}), 401

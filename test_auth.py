@@ -22,7 +22,7 @@ def test_login():
 def test_verify():
     """Test verifying authenticated user"""
     print("\n=== Testing Token Verification ===")
-    login_data = {"email": "test3user@gmail.com", "password": "password12311"}
+    login_data = {"email": "test5user@gmail.com", "password": "password12311"}
     login_response = requests.post(f"{BASE_URL}/login", json=login_data)
     
     if login_response.status_code == 200:
