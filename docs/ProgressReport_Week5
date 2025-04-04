@@ -1,0 +1,86 @@
+Week: 03.14.25 - 03.27.25
+Team leader: Sai Neethu Bonagiri
+ 
+Sai Neethu Bonagiri: 12 hours
+  Tasks completed:
+	    - Team leader
+	    - Researched about Supabase for authentication 
+	    - Installed and configured Supabase in the Flask app.
+	    - Created a Supabase project, set up the authentication, and obtained API credentials (Project URL and anon/Public key)
+	    - Configured the config.py file for Supabase
+	    - Disable email confirmation temporarily, but noted that it should be re-enabled for best practices once the integration is complete.
+	    - Created and tested test_supabase.py to test connection to Supabase from Flask app 
+	    - Added the redirect URL as localhost URL and will update it to the frontend URL when deployed
+	    - Created auth.py where for user registration, login and verification 
+	    - Tested auth.py by creating test_auth.py to verify user registration and login functionality(successfully tested with email verification).
+	    - Fixed issues with user registration, login, and email format errors in the testing flow
+	    - Implemented error handling for user registration and login to display relevant error messages(e.g., invalid email format, user already registered).
+	    - Successfully tested the registration and login process, including handling duplicate user registration.
+	    - Wrote documentation of the process I did for future reference. 
+	    - I ensured each step aligned with the project requirements	
+
+	    - Verified that the Search functionality is case insensitive
+  Tasks for next week:
+	    - Continued Working on user authentication:
+	    	- collabrate with the frontend team to update the final URL in Supabase once the frontend is deployed.
+		- Research/learn more about authentication and access tokens (JWT)
+		- Merge the search functionality and authentication into backend main and ensure everything is smoothly intergrating 
+		- Investigate third party authentication for our project (DUO)
+		- Next steps after authentication
+	    - Test other functionalities as required. 
+	    - Update documentation of the Authentication as needed. 
+	    - Start integration with frontend to begin testing earlier. 
+ 
+Esha Kumar: 	10 hours
+  Tasks completed:
+	  - Finished developing screens adding additional features
+		- Added meetups page
+		- Student check in for meetups
+		- Leveling system
+		- Lobby for meetups
+		- Overall ways to make the app more interactive ex. adding the usernames with meetup creation
+		- As a team discussed what else we can teak and add.
+          - Researched Supabase for integration and how to do the verification
+  	  - Debugged features and added some extra features for the screens
+  	  - Looked into where to insert APIs for integration.
+  	  - Added the QR code scanning in the app for students to check into events.	
+  Tasks for next week:
+  	  - Work on integration into supabase
+	  - Test and Debug as we integrate
+  	  - Look at how to incorportate the leveling system
+
+Sophia O'Malley: 	10 hours
+ Tasks completed:
+	    - Created and designed new screens on Lovable
+	    - Researched integration into backend on Superbase
+	    - Researched Leaflet API and how to implement it into our codebase
+	    - Researched additional features on Lovable and on how to inhance UI to be more appealing
+	    - Debugged screens on Lovable
+	    - Helped implementing the leveling and reward system.
+
+  Tasks for next week:
+	    - Begin integration with backend
+	    - Implement and debug the map API
+	    - Update screens as needed
+	    - Continue on modifying the leveling and reward system
+
+Patrick:	10 hours
+  Tasks completed:
+	-Research and Design Leveling and Reward Systems
+	-Implemented Leveling System (coding and debugging)
+		-Updated all related models
+		-Created new models
+		-Created API Endpoints
+	-Created check_db_user.py to help debug Flask-migrate and other DB related issues
+	-Implemented Reward System (coding and debugging)
+		-Updated all related Models
+		-Created new Models
+		-Created helper class for processing rewards
+		-Created API Endpoints								
+	-Research and plan integration w/ frontend for rewards and leveling system
+
+  Tasks for next week:
+	    -Finish testing Leveling and Reward Systems
+	    -Begin merging features into backend-main branch
+	    -Begin integrating features w/ frontend for testing
+	    -Test and debug any issues that occur with integration
