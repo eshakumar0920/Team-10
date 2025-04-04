@@ -44,7 +44,16 @@ Sophia O'Malley: 	10 hours
 
 Patrick:	10 hours
   Tasks completed:
-	-
-
+	-Tested and debugged features of the leveling system and rewards system
+	-Utilized unittest module to create tests
+	-Created test_event_db, a separate DB from the development DB that can be utilized for testing
+	-Updated shared doc w/ Testing tab
+		-Reference point for current status of features
+		-Guides and Tips for running tests
+	-Research modules and techs for full integration testing
   Tasks for next week:
-	    -
+	-Work with Neethu to eliminate any backend integration conflicts as they appear
+	-Collaborate w/ frontend to begin Integration Testing
+	-Debug full stack integration issues as they appear
+	-Fine-tune the gamified user retention features
+	-Determine feasiblity of stretch goals if possible and begin their implementation
