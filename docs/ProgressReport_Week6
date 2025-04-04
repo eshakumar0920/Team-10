@@ -4,9 +4,17 @@ Team leader: Sai Neethu Bonagiri
 Sai Neethu Bonagiri: 10 hours
   Tasks completed:
 	    - Team leader
-
+	    - Debugged the Verify function in the authenticaton(changed the responnse format that is being sent)
+	    - Researched and outlined the necessary steps for authentication integration
+		- Identified what steps the frontend and backend teams need to take.
+	    - Started on API documentation and register, login endpoints for the frontend integration
+            - Collaborated with the frontend team to align on how to integrate the backend APIs with Supabase authentication
+            - Discussed token usage for route protection and requested teammate to research further
+	    - Helped/discussed on identifying which backend routes(e.g., create event) may require protection using access token
   Tasks for next week:
-	    - 
+	    - Provide complete API documentation and testing steps for the frontend team
+	    - Coordinate with frontend team during integration and testing. 
+	    - Work on protected route implementation logic using access token (as needed)
 	    	
  
 Esha Kumar: 	10 hours
