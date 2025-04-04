@@ -84,7 +84,20 @@ Week 5 - 03.14.25
     - Decide between Flask login, Firebase(preferred), Supabase, or Auth0
     - Update Jira Weekly.
 
-
-
+Week 6 - 03.28.25
+  Attendees: Professor Alagar, TA Thenn, Team 10 (entire team)
+  Note Taker: Esha
+  Team Leader: Sai Neethu Bonagiri
+  Comments:
+    - Discussion on working through any remaining features, after finishing the tasks ahead of schedule
+    - Anything left unfinished by the end of the semester can be labeled as "work to be continued" for future reference. 
+    - Focus on any additional features that can be added if the teams finish their current tasks early. These can be explored further if time permits. 
+  
+  TO DO: 
+    - Test authentication, event creation, and leveling systems to ensure everything works seamlessly
+    - Continue implementation in the backend
+    - Ensure all screens are final on the frontend, and work on integration with backend
+    - Test and fine tune level syestem for users.
+    - Explore any new features or improvements for the app.
 
 
