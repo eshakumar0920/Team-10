@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, UTC
 from models import db
 
 class Event(db.Model):
@@ -29,7 +29,7 @@ class Event(db.Model):
         self.location = location
         self.event_date = event_date
         self.creator_id = creator_id
-        self.created_at = datetime.now().isoformat()
+        self.created_at = datetime.now(UTC).isoformat()
         
         # Set semester if provided, otherwise try to get current semester
         if semester:
@@ -58,7 +58,7 @@ class Event(db.Model):
     def award_creator_xp(self):
         """Award XP to the creator/organizer of the event"""
         from models.user import User
-        creator = User.query.get(self.creator_id)
+        creator = db.session.get(User, self.creator_id)
         
         if creator:
             creator.award_xp(

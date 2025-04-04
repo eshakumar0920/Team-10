@@ -1,5 +1,5 @@
 # models/user.py
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, UTC
 from . import db
 from .user_activity import UserActivity
 
@@ -17,11 +17,11 @@ class User(db.Model):
     total_xp_earned = db.Column(db.Integer, default=0)  # Lifetime total (never resets)
     
     # Profile information
-    join_date = db.Column(db.DateTime, default=datetime.utcnow)
+    join_date = db.Column(db.DateTime(timezone=True), default=lambda: datetime.now(UTC))
     profile_picture = db.Column(db.String(255), nullable=True)
     
     # Weekly activity tracking
-    last_event_date = db.Column(db.DateTime, nullable=True)
+    last_event_date = db.Column(db.DateTime(timezone=True), nullable=True)
     active_weeks_streak = db.Column(db.Integer, default=0)
     
     # Semester tracking
@@ -67,7 +67,7 @@ class User(db.Model):
         
         # Check if any participants are new interactions
         has_new_interaction = False
-        two_weeks_ago = datetime.utcnow() - timedelta(days=14)
+        two_weeks_ago = datetime.now(UTC) - timedelta(days=14)
         
         for participant in participants:
             # Skip self
@@ -105,7 +105,7 @@ class User(db.Model):
     
     def update_activity_streak(self):
         """Update the user's weekly activity streak"""
-        now = datetime.utcnow()
+        now = datetime.now(UTC)
         if not self.last_event_date:
             # First event
             self.active_weeks_streak = 1

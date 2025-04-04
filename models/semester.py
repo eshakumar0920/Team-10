@@ -1,5 +1,5 @@
 # models/semester.py
-from datetime import datetime
+from datetime import datetime, UTC
 from . import db
 
 class Semester(db.Model):
@@ -8,8 +8,8 @@ class Semester(db.Model):
     
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False, unique=True)  # e.g., "Spring 2023"
-    start_date = db.Column(db.DateTime, nullable=False)
-    end_date = db.Column(db.DateTime, nullable=False)
+    start_date = db.Column(db.DateTime(timezone=True), nullable=False)
+    end_date = db.Column(db.DateTime(timezone=True), nullable=False)
     is_active = db.Column(db.Boolean, default=False)
     
     def __repr__(self):

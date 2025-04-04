@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, UTC
 from models import db
 
 class Participant(db.Model):
@@ -22,7 +22,7 @@ class Participant(db.Model):
     def __init__(self, event_id, user_id):
         self.event_id = event_id
         self.user_id = user_id
-        self.joined_at = datetime.now().isoformat()
+        self.joined_at = datetime.now(UTC).isoformat()
     
     def to_dict(self):
         return {
@@ -41,7 +41,7 @@ class Participant(db.Model):
             
             # Get event to determine base XP reward
             from models.event import Event
-            event = Event.query.get(self.event_id)
+            event = db.session.get(Event, self.event_id)
             
             if event:
                 # Base XP for attending is set to 50 as per the leveling design
@@ -49,7 +49,7 @@ class Participant(db.Model):
                 
                 # Award XP to user with bonuses
                 from models.user import User
-                user = User.query.get(self.user_id)
+                user = db.session.get(User, self.user_id)
                 if user:
                     user.award_xp(
                         base_amount=base_xp,

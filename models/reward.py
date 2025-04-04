@@ -1,6 +1,8 @@
 # models/reward.py
 from . import db
-from datetime import datetime
+from datetime import datetime, UTC
+
+from .user import User
 
 class RewardType(db.Model):
     """Defines different types of rewards (profile images)"""
@@ -29,7 +31,7 @@ class UserReward(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     reward_type_id = db.Column(db.Integer, db.ForeignKey('reward_types.id'), nullable=False)
-    acquired_at = db.Column(db.DateTime, default=datetime.utcnow)
+    acquired_at = db.Column(db.DateTime(timezone=True), default=lambda:datetime.now(UTC))
     is_equipped = db.Column(db.Boolean, default=False)  # Is this the user's active profile image
     loot_box_id = db.Column(db.Integer, db.ForeignKey('loot_boxes.id'), nullable=True)  # Which loot box it came from
     
@@ -46,9 +48,8 @@ class UserReward(db.Model):
         self.is_equipped = True
         
         # Update the user's profile picture
-        from .user import User
-        user = User.query.get(self.user_id)
-        reward = RewardType.query.get(self.reward_type_id)
+        user = db.session.get(User, self.user_id)
+        reward = db.session.get(RewardType, self.reward_type_id)
         if user and reward:
             user.profile_picture = reward.image_url
         
