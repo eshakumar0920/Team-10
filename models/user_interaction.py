@@ -1,5 +1,5 @@
 # models/user_interaction.py
-from datetime import datetime
+from datetime import datetime, UTC
 from . import db
 
 class UserInteraction(db.Model):
@@ -10,7 +10,7 @@ class UserInteraction(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     other_user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     event_id = db.Column(db.Integer, db.ForeignKey('events.id'), nullable=False)
-    interaction_date = db.Column(db.DateTime, default=datetime.utcnow)
+    interaction_date = db.Column(db.DateTime(timezone=True), default=lambda: datetime.now(UTC))
     semester = db.Column(db.String(20), nullable=True)  # To track interactions per semester
     
     __table_args__ = (

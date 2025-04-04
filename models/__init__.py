@@ -171,6 +171,7 @@ def initialize_reward_types():
     ]
     
     # Unique rare rewards (available only to max level players)
+    # Will likely change to campus themed avatar/image
     rare_rewards = [
         {"name": "Golden Trophy", "description": "A golden trophy for exceptional achievement", "tier": 4, "category": "Unique", "theme": "Achievement", "image_url": "/static/rewards/rare/golden_trophy.png", "is_rare": True},
         {"name": "Diamond Badge", "description": "A diamond badge for consistent excellence", "tier": 4, "category": "Unique", "theme": "Achievement", "image_url": "/static/rewards/rare/diamond_badge.png", "is_rare": True},

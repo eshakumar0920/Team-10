@@ -1,5 +1,5 @@
 # models/loot_box.py
-from datetime import datetime
+from datetime import datetime, UTC
 from . import db
 
 class LootBoxType(db.Model):
@@ -27,8 +27,8 @@ class LootBox(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     type_id = db.Column(db.Integer, db.ForeignKey('loot_box_types.id'), nullable=False)
     is_opened = db.Column(db.Boolean, default=False)
-    awarded_at = db.Column(db.DateTime, default=datetime.utcnow)
-    opened_at = db.Column(db.DateTime, nullable=True)
+    awarded_at = db.Column(db.DateTime(timezone=True), default=lambda: datetime.now(UTC))
+    opened_at = db.Column(db.DateTime(timezone=True), nullable=True)
     awarded_for = db.Column(db.String(100), nullable=True)  # e.g., "level_up", "event_participation"
     
     # Relationship with rewards (added relationship)

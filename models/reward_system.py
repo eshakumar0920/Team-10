@@ -11,6 +11,7 @@ class RewardSystem:
     def determine_loot_box_tier(user_level):
         """Determine which tier of loot box to award based on user level and drop rates"""
         # Find the drop rate record for this level range
+        # Queries DB table LootBoxDropRate to find the user's drop rate
         drop_rate = LootBoxDropRate.query.filter(
             and_(
                 LootBoxDropRate.level_min <= user_level,
@@ -22,12 +23,14 @@ class RewardSystem:
             # Default to lowest tier if no drop rate found
             return 1
         
-        # Roll a random number between 0 and 100
+        # Roll a random floating point number between 0 and 100
         roll = random.uniform(0, 100)
         
+        # Cumulative probability approach to determine what tier the random roll falls into
         # Determine the tier based on the roll and drop rates
         cumulative = 0
         
+        # For each Tier 1-4 determine if the random roll is within the range of their drop rate
         # Check Tier 1
         cumulative += drop_rate.tier_1_rate
         if roll <= cumulative:
@@ -85,6 +88,7 @@ class RewardSystem:
         """Select a random reward of the given tier for the user"""
         query = RewardType.query.filter_by(tier=tier)
         
+        # Max level users have unique chance at rare items
         # If user is max level and we want rare items, filter for those
         if is_max_level and tier == 4:
             # Chance to get a rare item
@@ -111,6 +115,7 @@ class RewardSystem:
             reward_type_id=selected_reward.id
         ).first()
         
+        # Duplicates may be handled differently in future
         if existing:
             # If so, we could give them a duplicate or try again
             # For now, let's allow duplicates
@@ -123,7 +128,7 @@ class RewardSystem:
         """Award a loot box based on user's level"""
         from .user import User
         
-        user = User.query.get(user_id)
+        user = db.session.get(User, user_id)
         if not user:
             return None
         
@@ -155,18 +160,18 @@ class RewardSystem:
     def process_loot_box_opening(loot_box_id):
         """Process the opening of a loot box and award a reward"""
         # Get the loot box
-        loot_box = LootBox.query.get(loot_box_id)
+        loot_box = db.session.get(LootBox, loot_box_id)
         if not loot_box or loot_box.is_opened:
             return None, "Loot box not found or already opened"
         
         # Get the loot box type
-        loot_box_type = LootBoxType.query.get(loot_box.type_id)
+        loot_box_type = db.session.get(LootBoxType, loot_box.type_id)
         if not loot_box_type:
             return None, "Loot box type not found"
         
         # Get the user
         from .user import User
-        user = User.query.get(loot_box.user_id)
+        user = db.session.get(User, loot_box.user_id)
         if not user:
             return None, "User not found"
         
