@@ -35,4 +35,11 @@ def create_app(config_name='dev'):
 
 if __name__ == '__main__':
     app = create_app(os.getenv('FLASK_ENV', 'dev'))
+    #app.run(debug=True)
+
+    # Prints all registered routes for debugging
+    print("Registered routes:")
+    for rule in app.url_map.iter_rules():
+        print(f"{rule} - Methods: {rule.methods}")
+
     app.run(debug=True)
