@@ -3,60 +3,68 @@ import random
 from . import db
 from .loot_box import LootBox, LootBoxType
 from .reward import RewardType, UserReward
-from .drop_rate import LootBoxDropRate, RewardDropRate
+from .drop_rate import LootBoxLevelRange, LootBoxTierRate, RewardBoxTier, RewardTierRate
 from sqlalchemy import and_
 
 class RewardSystem:
     @staticmethod
     def determine_loot_box_tier(user_level):
         """Determine which tier of loot box to award based on user level and drop rates"""
-        # Find the drop rate record for this level range
-        # Queries DB table LootBoxDropRate to find the user's drop rate
-        drop_rate = LootBoxDropRate.query.filter(
+        # Find the level range record for this level
+        level_range = LootBoxLevelRange.query.filter(
             and_(
-                LootBoxDropRate.level_min <= user_level,
-                LootBoxDropRate.level_max >= user_level
+                LootBoxLevelRange.level_min <= user_level,
+                LootBoxLevelRange.level_max >= user_level
             )
         ).first()
         
-        if not drop_rate:
-            # Default to lowest tier if no drop rate found
+        if not level_range:
+            # Default to lowest tier if no level range found
+            return 1
+        
+        # Get all tier rates for this level range
+        tier_rates = LootBoxTierRate.query.filter_by(
+            level_range_id=level_range.id
+        ).order_by(LootBoxTierRate.tier).all()
+        
+        if not tier_rates:
+            # Default to lowest tier if no tier rates found
             return 1
         
         # Roll a random floating point number between 0 and 100
         roll = random.uniform(0, 100)
         
-        # Cumulative probability approach to determine what tier the random roll falls into
-        # Determine the tier based on the roll and drop rates
+        # Cumulative probability approach to determine tier
         cumulative = 0
         
-        # For each Tier 1-4 determine if the random roll is within the range of their drop rate
-        # Check Tier 1
-        cumulative += drop_rate.tier_1_rate
-        if roll <= cumulative:
-            return 1
+        for tier_rate in tier_rates:
+            cumulative += tier_rate.rate
+            if roll <= cumulative:
+                return tier_rate.tier
         
-        # Check Tier 2
-        cumulative += drop_rate.tier_2_rate
-        if roll <= cumulative:
-            return 2
-        
-        # Check Tier 3
-        cumulative += drop_rate.tier_3_rate
-        if roll <= cumulative:
-            return 3
-        
-        # If we made it here, it's Tier 4
-        return 4
+        # If no tier is selected (due to rounding errors or rates not summing to 100),
+        # return the highest tier
+        return tier_rates[-1].tier if tier_rates else 1
     
     @staticmethod
     def determine_reward_tier(loot_box_tier):
         """Determine which tier of reward to give based on loot box tier and drop rates"""
-        # Find the drop rate record for this loot box tier
-        drop_rate = RewardDropRate.query.filter_by(loot_box_tier=loot_box_tier).first()
+        # Find the box tier record for this loot box tier
+        box_tier = RewardBoxTier.query.filter_by(
+            loot_box_tier=loot_box_tier
+        ).first()
         
-        if not drop_rate:
-            # Default to loot box tier if no drop rate found
+        if not box_tier:
+            # Default to loot box tier if no box tier found
+            return loot_box_tier
+        
+        # Get all tier rates for this box tier
+        tier_rates = RewardTierRate.query.filter_by(
+            box_tier_id=box_tier.id
+        ).order_by(RewardTierRate.tier).all()
+        
+        if not tier_rates:
+            # Default to box tier if no tier rates found
             return loot_box_tier
         
         # Roll a random number between 0 and 100
@@ -65,23 +73,13 @@ class RewardSystem:
         # Determine the tier based on the roll and drop rates
         cumulative = 0
         
-        # Check Tier 1
-        cumulative += drop_rate.tier_1_rate
-        if roll <= cumulative:
-            return 1
+        for tier_rate in tier_rates:
+            cumulative += tier_rate.rate
+            if roll <= cumulative:
+                return tier_rate.tier
         
-        # Check Tier 2
-        cumulative += drop_rate.tier_2_rate
-        if roll <= cumulative:
-            return 2
-        
-        # Check Tier 3
-        cumulative += drop_rate.tier_3_rate
-        if roll <= cumulative:
-            return 3
-        
-        # If we made it here, it's Tier 4
-        return 4
+        # If no tier is selected, return the highest tier
+        return tier_rates[-1].tier if tier_rates else loot_box_tier
     
     @staticmethod
     def select_random_reward(tier, user_id, is_max_level=False):
@@ -89,7 +87,6 @@ class RewardSystem:
         query = RewardType.query.filter_by(tier=tier)
         
         # Max level users have unique chance at rare items
-        # If user is max level and we want rare items, filter for those
         if is_max_level and tier == 4:
             # Chance to get a rare item
             if random.random() < 0.25:  # 25% chance for rare item
@@ -117,7 +114,6 @@ class RewardSystem:
         
         # Duplicates may be handled differently in future
         if existing:
-            # If so, we could give them a duplicate or try again
             # For now, let's allow duplicates
             pass
         

@@ -27,14 +27,18 @@ class User(db.Model):
     # Semester tracking
     current_semester = db.Column(db.String(20), nullable=True)
     
-    # Tier tracking (tier persists across semesters)
-    current_tier = db.Column(db.Integer, default=1)
-    
     # Relationships
     activities = db.relationship('UserActivity', backref='user', lazy='dynamic')
     participations = db.relationship('Participant', back_populates='user')
     loot_boxes = db.relationship('LootBox', backref='user', lazy='dynamic')
-    rewards = db.relationship('UserReward', backref='user', lazy='dynamic')  # Add rewards relationship
+    rewards = db.relationship('UserReward', backref='user', lazy='dynamic')
+    
+    @property
+    def current_tier(self):
+        """Get user's current tier based on level (calculated dynamically)"""
+        from .level import Level
+        level_info = Level.query.filter_by(level_number=self.current_level).first()
+        return level_info.tier if level_info else 1
     
     def calculate_activity_bonus(self):
         """Calculate the weekly activity bonus multiplier"""
@@ -143,7 +147,6 @@ class User(db.Model):
         
         # Update user's XP
         previous_level = self.current_level
-        previous_tier = self.current_tier
         self.current_xp += xp_awarded
         self.total_xp_earned += xp_awarded
         
@@ -169,12 +172,6 @@ class User(db.Model):
         # Award loot box if leveled up
         if self.current_level > previous_level:
             self.award_level_up_loot_box(previous_level)
-            
-            # Check if tier has changed
-            from .level import Level
-            current_level_info = Level.query.filter_by(level_number=self.current_level).first()
-            if current_level_info and current_level_info.tier > previous_tier:
-                self.current_tier = current_level_info.tier
         
         # Maximum level check - if at max level, award loot box for event participation
         if self.current_level == 25 and activity_type in ['event_attendance', 'event_organization']:
@@ -188,12 +185,8 @@ class User(db.Model):
         from .level import Level
         
         # Find all levels that the user's XP qualifies for
-        # Try to use total_xp first (new system), fall back to xp_required (old system)
         eligible_levels = Level.query.filter(
-            db.or_(
-                db.and_(Level.total_xp != None, Level.total_xp <= self.current_xp),
-                db.and_(Level.total_xp == None, Level.xp_required <= self.current_xp)
-            )
+            Level.total_xp <= self.current_xp
         ).order_by(Level.level_number.desc()).all()
         
         if eligible_levels:
@@ -203,12 +196,6 @@ class User(db.Model):
             # Update user's level if it has increased
             if highest_eligible.level_number > self.current_level:
                 self.current_level = highest_eligible.level_number
-                
-                # Update user's tier based on the new level
-                if hasattr(highest_eligible, 'tier') and highest_eligible.tier is not None:
-                    if highest_eligible.tier > self.current_tier:
-                        self.current_tier = highest_eligible.tier
-                
                 return True
         
         return False
@@ -256,5 +243,5 @@ class User(db.Model):
         self.current_level = 1
         self.active_weeks_streak = 0
         self.current_semester = semester_name
-        # Don't reset total_xp_earned or current_tier
+        # Don't reset total_xp_earned
         db.session.commit()

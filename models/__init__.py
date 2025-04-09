@@ -13,7 +13,7 @@ from .user_interaction import UserInteraction
 from .loot_box import LootBox, LootBoxType
 from .semester import Semester
 from .reward import RewardType, UserReward  # Add new models
-from .drop_rate import LootBoxDropRate, RewardDropRate, initialize_drop_rates  # Add new models
+from .drop_rate import LootBoxLevelRange, LootBoxTierRate, RewardBoxTier, RewardTierRate, initialize_drop_rates  # New normalized models
 
 def initialize_levels():
     """Initialize default levels"""
