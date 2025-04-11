@@ -27,10 +27,12 @@ Sophia O'Malley: 	12+ hours
 	- Modified the tables in Supabase
 	- Helped connect the Supabase to the front-end meetups and events page
 	- Had one-on-one debugging sessions with Esha
+	- Debugged the Leaflet.js and now is fully functional 
+	- Added the pins on the map to map out where each event is being held on UTD campus
     Tasks for next week:
 	- Continue to connect the routes to the front-end
   	- Finish connecting each feature 
-	- Connect the auth to the front end
+	- Continue connecting the auth to the front end
 
 Sai Neethu Bonagiri: 	10 hours
     Tasks completed:
