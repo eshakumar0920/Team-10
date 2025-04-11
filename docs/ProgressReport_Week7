@@ -1,14 +1,25 @@
 Week: 04.05.25 - 04.11.25
 Team leader: Esha Kumar
  
-Esha Kumar: 12 hours
+Esha Kumar: 12+ hours
     Tasks completed:
 	- Team leader
-	- 
-	- 
+	- Debugged frontend screens for usability and functionality
+	- Fixed map rendering issues and integrated event/meetup markers
+	- Implemented leveling system logic with loot box integration
+	- Connected Leaflet.js to display interactive maps for meetups
+	- Connected Supabase tables for leveling data and updated table naming to match backend schema
+	- Connected Loveable feature to Supabase backend
+	- Set up local terminal environment for easier development
+	- Merged all frontend branches into main and cleaned up GitHub repository
+	- Wrote documentation for local frontend connection setup
+	- Reviewed API endpoints and frontend routing, identified areas needing updates
+	- Connected authentication system to frontend (integration in progress)
     Tasks for next week:
-	-  
-  	-
+	- Finalize routing and connect all major features across frontend and backend
+	- Debug integration issues, especially around authentication and leveling
+	- Ensure authentication is fully functional and secured
+	-  Start preparing for mid-project demo or presentation
  
 Sophia O'Malley: 	12+ hours
     Tasks completed:
