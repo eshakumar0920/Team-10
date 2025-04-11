@@ -14,32 +14,51 @@ def register():
 
     if not email or not password:
         return jsonify({"error": "Missing email or password"}), 400
+
+    if not email.endswith("@utdallas.edu"):
+        return jsonify({"error": "Only @utdallas.edu emails are allowed"}), 403
     
-    # Debug: Log email to confirm it's correct
+    # Check if the password length is less than 6 characters
+    if len(password) < 6:
+        return jsonify({"error": "Password is too short. It must be at least 6 characters."}), 400
+
     print(f"Attempting to register user with email: {email}")
-    '''
-    response = supabase.auth.sign_up({"email": email, "password": password})
 
-    if "error" in response:
-        return jsonify({"error": response["error"]["message"]}), 400
-
-    return jsonify({"message": "User registered successfully"}), 201'
-    '''
     try:
-        # Attempt to register the user
         response = supabase.auth.sign_up({"email": email, "password": password})
 
-        # If an error is returned in the response, log it
-        if "error" in response:
-            print(f"Error in registration: {response['error']['message']}")
-            return jsonify({"error": response["error"]["message"]}), 400
-        
-        print(f"User registered successfully: {response}")
-        return jsonify({"message": "User registered successfully"}), 201
+        # Proper error checking using attribute access
+        if hasattr(response, "error") and response.error:
+            error_message = response.error.message
+
+            if "email already exists" in error_message.lower():
+                return jsonify({
+                    "error": "Email already registered",
+                    "message": "Account with this email already exists"
+                }), 409
+
+            return jsonify({
+                "error": error_message,
+                "message": "Registration failed"
+            }), 400
+
+        # Handle case where user object might be None
+        if not hasattr(response, "user") or response.user is None:
+            return jsonify({
+                "error": "Unexpected error during registration",
+                "message": "User not created"
+            }), 500
+
+        return jsonify({
+            "message": "Registration successful. Please check your email to confirm your account.",
+            "email": email
+        }), 201
+
     except Exception as e:
-        # If any exception occurs, print the error
-        print(f"Exception occurred: {e}")
-        return jsonify({"error": str(e)}), 400
+        return jsonify({
+            "error": str(e),
+            "message": "Registration failed due to server error"
+        }), 500
 
 @auth_bp.route("/login", methods=["POST"])
 def login():
@@ -47,13 +66,11 @@ def login():
     email = data.get("email")
     password = data.get("password")
 
-    '''
-    response = supabase.auth.sign_in_with_password({"email": email, "password": password})
+    if not email or not password:
+        return jsonify({"error": "Missing email or password"}), 400
 
-    if "error" in response:
-        return jsonify({"error": response["error"]["message"]}), 401
-
-    return jsonify({"access_token": response["session"]["access_token"]}), 200 '''
+    if not email.endswith("@utdallas.edu"):
+        return jsonify({"error": "Only @utdallas.edu emails are allowed"}), 403
 
     try:
         # Use .sign_in_with_password() method
@@ -61,11 +78,8 @@ def login():
             "email": email, 
             "password": password
         })
-        #print("Login Successful")
         # Access the access token from the session attribute
         access_token = response.session.access_token
-       # print(f"Login successful for user {email}")
-        #return jsonify({"access_token": access_token}), 200
         return jsonify({
             "message": "Login successful",
             "email": email,
@@ -73,8 +87,6 @@ def login():
         }), 200
     except Exception as e:
         # More robust error handling
-        #print(f"Login error: {str(e)}")
-       # return jsonify({"error": str(e)}), 401
         error_message = str(e)
 
         if "Invalid login credentials" in error_message:
@@ -92,61 +104,46 @@ def login():
                 "error": error_message,
                 "message": "Login failed"
             }), 401
-'''
-@auth_bp.route("/verify", methods=["GET"])
-def verify():
-    token = request.headers.get("Authorization")
-    if not token:
-        return jsonify({"error": "Missing token"}), 401
-
-    try:
-        # Use .get_user() method correctly
-        response = supabase.auth.get_user(token)
-        
-        # Access user information directly from the response
-        #return jsonify(response.user.model_dump()), 200
-        if response.get("error"):
-            return jsonify({"error": response.error.message}), 401
-            # Handle the case where there's an error in the response
-            #return jsonify({"error": response["error"]["message"]}), 401
-            
-        user_data = { 
-            "id": response.user.id,  # Access user ID
-            "email": response.user.email,  # Access user email
-            "created_at": response.user.created_at  # Access user creation date
-        }
-        return jsonify(user_data), 200  # Return user data as JSON
-    except Exception as e:
-        print(f"Verification error: {str(e)}")
-        return jsonify({"error": str(e)}), 401
-   
-'''
 
 @auth_bp.route("/verify", methods=["GET"])
 def verify():
     token = request.headers.get("Authorization")
+    
     if not token:
         return jsonify({"error": "Missing token"}), 401
 
+    # Remove "Bearer " prefix if included
+    if token.startswith("Bearer "):
+        token = token[7:]
+
     try:
-        # Use .get_user() method correctly
+        # Use .get_user() method to fetch user info
         response = supabase.auth.get_user(token)
 
-        # Check if there's an error directly in the response
+        # Check for error in response
         if hasattr(response, 'error') and response.error:
             return jsonify({"error": response.error.message}), 401
-        
-        # Ensure response.user exists before trying to access its attributes
-        if hasattr(response, 'user'):
+
+        # Ensure response.user exists
+        if hasattr(response, 'user') and response.user:
             user_data = {
-                "id": response.user.id,  # Access user ID
-                "email": response.user.email,  # Access user email
-                "created_at": response.user.created_at  # Access user creation date
+                "id": response.user.id,
+                "email": response.user.email,
+                "created_at": response.user.created_at
             }
-            return jsonify(user_data), 200  # Return user data as JSON
+            return jsonify(user_data), 200
         else:
             return jsonify({"error": "User not found"}), 404
 
     except Exception as e:
-        print(f"Verification error: {str(e)}")
-        return jsonify({"error": str(e)}), 401
+        error_message = str(e)
+
+        if "JWT expired" in error_message:
+            return jsonify({"error": "Token expired"}), 401
+        elif "Invalid token" in error_message or "invalid signature" in error_message.lower():
+            return jsonify({"error": "Invalid token"}), 401
+        else:
+            return jsonify({
+                "error": error_message,
+                "message": "Verification failed"
+            }), 401
