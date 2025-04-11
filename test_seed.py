@@ -7,16 +7,8 @@ import time
 import random
 from datetime import datetime
 from app import create_app, db
-from models import User, RewardType, UserReward
+from models import User, RewardType, UserReward, LootBox, LootBoxType
 from sqlalchemy.exc import IntegrityError
-
-# Try to import LootBox model if it exists
-try:
-    from models import LootBox
-    has_lootbox_model = True
-except ImportError:
-    has_lootbox_model = False
-    print("LootBox model not found - will try to create user reward without loot box")
 
 # Create the app with the development configuration
 app = create_app('dev')
@@ -54,27 +46,51 @@ with app.app_context():
             db.session.commit()
             print(f"Created alternate test user with ID: {test_user.id}")
     
-    # Create a loot box if the model is available
-    loot_box_id = None
-    if has_lootbox_model:
-        # Check if a loot box already exists
-        existing_lootbox = LootBox.query.first()
-        if existing_lootbox:
-            loot_box_id = existing_lootbox.id
-            print(f"Using existing loot box with ID: {loot_box_id}")
+    # First, check if we have a LootBoxType
+    loot_box_type = LootBoxType.query.first()
+    if not loot_box_type:
+        try:
+            # Create a loot box type
+            loot_box_type = LootBoxType(
+                name="Test Loot Box Type",
+                description="A test loot box type for API testing",
+                tier=1,
+                icon_url="https://example.com/lootbox.png"
+            )
+            db.session.add(loot_box_type)
+            db.session.commit()
+            print(f"Created loot box type with ID: {loot_box_type.id}")
+        except Exception as e:
+            db.session.rollback()
+            print(f"Error creating loot box type: {type(e).__name__}: {str(e)}")
+    else:
+        print(f"Using existing loot box type with ID: {loot_box_type.id}")
+    
+    # Now create a LootBox if we have a valid LootBoxType
+    loot_box = None
+    if loot_box_type:
+        # Check if an unopened loot box already exists for this user
+        unopened_lootbox = LootBox.query.filter_by(
+            user_id=test_user.id, 
+            is_opened=False
+        ).first()
+        
+        if unopened_lootbox:
+            loot_box = unopened_lootbox
+            print(f"Found existing unopened loot box with ID: {loot_box.id}")
         else:
             # Create a new loot box
             try:
                 loot_box = LootBox(
-                    name="Test Loot Box",
-                    tier="common",
-                    user_id=test_user.id
-                    # Add other required fields as needed
+                    user_id=test_user.id,
+                    type_id=loot_box_type.id,
+                    is_opened=False,
+                    awarded_at=datetime.now(),
+                    awarded_for="testing"
                 )
                 db.session.add(loot_box)
                 db.session.commit()
-                loot_box_id = loot_box.id
-                print(f"Created loot box with ID: {loot_box_id}")
+                print(f"Created loot box with ID: {loot_box.id}")
             except Exception as e:
                 db.session.rollback()
                 print(f"Error creating loot box: {type(e).__name__}: {str(e)}")
@@ -119,35 +135,14 @@ with app.app_context():
             acquired_at=datetime.now()
         )
         
-        # Only set loot_box_id if we have a valid ID or if the column is not nullable
-        if loot_box_id is not None:
-            user_reward.loot_box_id = loot_box_id
-        elif not is_nullable:
-            print("Warning: loot_box_id is required but no loot box exists")
-            # Try to create a minimal valid record by directly executing SQL
-            from sqlalchemy import text
-            sql = text("""
-                INSERT INTO user_rewards (user_id, reward_type_id, is_equipped, acquired_at, loot_box_id)
-                VALUES (:user_id, :reward_type_id, :is_equipped, :acquired_at, NULL)
-                RETURNING id
-            """)
-            result = db.session.execute(sql, {
-                'user_id': test_user.id,
-                'reward_type_id': test_reward.id,
-                'is_equipped': False,
-                'acquired_at': datetime.now()
-            })
-            user_reward_id = result.fetchone()[0]
-            db.session.commit()
-            print(f"Created user reward with ID: {user_reward_id} using direct SQL")
-            user_reward = UserReward.query.get(user_reward_id)
-            
-        else:
-            # Column is nullable, proceed with the ORM approach
-            print("Adding user reward with loot_box_id=NULL")
-            db.session.add(user_reward)
-            db.session.commit()
-            print(f"Created user reward with ID: {user_reward.id}")
+        # Set loot_box_id if we have a loot box
+        if loot_box:
+            user_reward.loot_box_id = loot_box.id
+        
+        # Add and commit
+        db.session.add(user_reward)
+        db.session.commit()
+        print(f"Created user reward with ID: {user_reward.id}")
     except Exception as e:
         db.session.rollback()
         print(f"Error creating user reward: {type(e).__name__}: {str(e)}")
@@ -155,5 +150,11 @@ with app.app_context():
     
     print("\nTest endpoints:")
     print(f"GET http://localhost:5000/api/rewards/users/{test_user.id}/rewards")
+    
     if 'user_reward' in locals() and user_reward and hasattr(user_reward, 'id') and user_reward.id is not None:
         print(f"POST http://localhost:5000/api/rewards/users/{test_user.id}/rewards/{user_reward.id}/equip")
+    
+    # Add the lootbox opening endpoint for testing
+    if 'loot_box' in locals() and loot_box and not loot_box.is_opened:
+        print(f"\nTest lootbox opening endpoint:")
+        print(f"POST http://localhost:5000/api/rewards/users/{test_user.id}/lootboxes/{loot_box.id}/open")
