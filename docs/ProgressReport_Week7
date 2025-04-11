@@ -34,14 +34,22 @@ Sophia O'Malley: 	12+ hours
   	- Finish connecting each feature 
 	- Continue connecting the auth to the front end
 
-Sai Neethu Bonagiri: 	10 hours
-    Tasks completed:
-	    Tasks completed:
-	- 
-	- 
+Sai Neethu Bonagiri: 	12+ hours
+       Tasks completed:
+	Tasks completed:
+	- Implemented user registration API with full edge case handling
+	- Added /login and /verify authentication routes with error handling and proper status code
+	- Wrote and tested for all three authentication routes (/register, /login, /verify)
+	- Collaborated with frontend team on integration and verified supabase constraints
+	- Explored OTP-based email verification
+	- Noted and documented email verification limits and more(e.g.,2 emails/hour per project)
+	- Reserched more on the integration
+	- Added new edge cases and updated documentation accordingly
+	- Created a pull request and addressing merge conflict issues.
     Tasks for next week:
-	-  
-  	-
+	- Resolve merge conflicts and finalize pull request
+  	- Begin implementation or support for protected routes using auth tokens. 
+	- Continue updating documentation and researching backend improvements
 
 Patrick:	10+ hours
     Tasks completed:
