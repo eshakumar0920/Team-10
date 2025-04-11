@@ -27,10 +27,15 @@ Sai Neethu Bonagiri: 	10 hours
 	-  
   	-
 
-Patrick:	10 hours
+Patrick:	10+ hours
     Tasks completed:
-	- 
-	- 
+	- Normalized database models related to Leveling and Rewards System
+	- Began using Postman to verify functionality of API endpoints
+	- Created document to track endpoint verification called "API Endpoint Documentation"
+	- Contributed to Integration Planning and Discussion during in-team meeting
+	- Merged all Event, Leveling, and Reward system features to 'backend-main' branch to prepare for integration
     Tasks for next week:
-	-  
-  	-
+	- Ensure all completed features in backend are merged with 'develop' branch 
+  	- Continue to utilize Postman to assist frontend with testing API endpoints
+	- Update features and routes as necessary based upon team feedback
+	- Begin creating scripts necessary for the Project Demo
