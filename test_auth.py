@@ -7,7 +7,7 @@ BASE_URL = "http://localhost:5000/auth"
 def test_register():
     """Test user registration"""
     print("\n=== Testing User Registration ===")
-    data = {"email": "test10user@utdallas.edu", "password": "password12311"}
+    data = {"email": "testuser1111@utdallas.edu", "password": "password12311"}
     response = requests.post(f"{BASE_URL}/register", json=data)
     print(f"Status code: {response.status_code}")
     print(f"Response: {json.dumps(response.json(), indent=2)}")
