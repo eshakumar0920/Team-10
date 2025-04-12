@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, UTC
 from models import db
 
 class Participant(db.Model):
@@ -6,7 +6,7 @@ class Participant(db.Model):
     
     id = db.Column(db.Integer, primary_key=True)
     event_id = db.Column(db.Integer, db.ForeignKey('events.id'), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)  # Changed to ForeignKey
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     joined_at = db.Column(db.String(50), nullable=False)
     
     # Add new fields for the leveling system
@@ -22,7 +22,7 @@ class Participant(db.Model):
     def __init__(self, event_id, user_id):
         self.event_id = event_id
         self.user_id = user_id
-        self.joined_at = datetime.now().isoformat()
+        self.joined_at = datetime.now(UTC).isoformat()
     
     def to_dict(self):
         return {
@@ -39,24 +39,29 @@ class Participant(db.Model):
         if self.attendance_status != 'attended':
             self.attendance_status = 'attended'
             
-            # Get event to determine XP reward
+            # Get event to determine base XP reward
             from models.event import Event
-            event = Event.query.get(self.event_id)
+            event = db.session.get(Event, self.event_id)
             
             if event:
-                xp_reward = event.xp_reward
-                self.xp_earned = xp_reward
+                # Base XP for attending is set to 50 as per the leveling design
+                base_xp = 50
                 
-                # Award XP to user
+                # Award XP to user with bonuses
                 from models.user import User
-                user = User.query.get(self.user_id)
+                user = db.session.get(User, self.user_id)
                 if user:
                     user.award_xp(
-                        amount=xp_reward,
+                        base_amount=base_xp,
                         activity_type='event_attendance',
                         event_id=self.event_id,
                         description=f"Attended event: {event.title}"
                     )
+                    
+                    # Store the actual XP earned (including bonuses) - calculated in award_xp
+                    latest_activity = user.activities.order_by(db.desc('id')).first()
+                    if latest_activity:
+                        self.xp_earned = latest_activity.xp_earned
                     
                 db.session.commit()
                 return True
