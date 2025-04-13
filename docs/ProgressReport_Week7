@@ -1,0 +1,65 @@
+Week: 04.05.25 - 04.11.25
+Team leader: Esha Kumar
+ 
+Esha Kumar: 12+ hours
+    Tasks completed:
+	- Team leader
+	- Debugged frontend screens for usability and functionality
+	- Fixed map rendering issues and integrated event/meetup markers
+	- Implemented leveling system logic with loot box integration
+	- Connected Leaflet.js to display interactive maps for meetups
+	- Connected Supabase tables for leveling data and updated table naming to match backend schema
+	- Connected Loveable feature to Supabase backend
+	- Set up local terminal environment for easier development
+	- Merged all frontend branches into main and cleaned up GitHub repository
+	- Wrote documentation for local frontend connection setup
+	- Reviewed API endpoints and frontend routing, identified areas needing updates
+	- Connected authentication system to frontend (integration in progress)
+    Tasks for next week:
+	- Finalize routing and connect all major features across frontend and backend
+	- Debug integration issues, especially around authentication and leveling
+	- Ensure authentication is fully functional and secured
+	-  Start preparing for mid-project demo or presentation
+ 
+Sophia O'Malley: 	12+ hours
+    Tasks completed:
+	- Continued adding UI components to the front-end
+	- Modified the tables in Supabase
+	- Helped connect the Supabase to the front-end meetups and events page
+	- Had one-on-one debugging sessions with Esha
+	- Debugged the Leaflet.js and now is fully functional 
+	- Added the pins on the map to map out where each event is being held on UTD campus
+    Tasks for next week:
+	- Continue to connect the routes to the front-end
+  	- Finish connecting each feature 
+	- Continue connecting the auth to the front end
+
+Sai Neethu Bonagiri: 	12+ hours
+       Tasks completed:
+	Tasks completed:
+	- Implemented user registration API with full edge case handling
+	- Added /login and /verify authentication routes with error handling and proper status code
+	- Wrote and tested for all three authentication routes (/register, /login, /verify)
+	- Collaborated with frontend team on integration and verified supabase constraints
+	- Explored OTP-based email verification
+	- Noted and documented email verification limits and more(e.g.,2 emails/hour per project)
+	- Reserched more on the integration
+	- Added new edge cases and updated documentation accordingly
+	- Created a pull request and addressing merge conflict issues.
+    Tasks for next week:
+	- Resolve merge conflicts and finalize pull request
+  	- Begin implementation or support for protected routes using auth tokens. 
+	- Continue updating documentation and researching backend improvements
+
+Patrick:	10+ hours
+    Tasks completed:
+	- Normalized database models related to Leveling and Rewards System
+	- Began using Postman to verify functionality of API endpoints
+	- Created document to track endpoint verification called "API Endpoint Documentation"
+	- Contributed to Integration Planning and Discussion during in-team meeting
+	- Merged all Event, Leveling, and Reward system features to 'backend-main' branch to prepare for integration
+    Tasks for next week:
+	- Ensure all completed features in backend are merged with 'develop' branch 
+  	- Continue to utilize Postman to assist frontend with testing API endpoints
+	- Update features and routes as necessary based upon team feedback
+	- Begin creating scripts necessary for the Project Demo

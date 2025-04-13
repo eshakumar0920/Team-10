@@ -1,0 +1,54 @@
+Week: 3.07.25 - 3.14.25
+Team leader: Sophia
+ 
+Sophia O'Malley: 10 hours
+    Tasks completed:
+	- Team leader
+	- Debugged screens
+      	- Converted screens from Figma into React Native
+      	- Used Expo Go to make screens interactive
+	- Researched ways to use Expo Go to cover every part of our plan
+    Tasks for next week:
+	-  Make all the screen interactive
+      	- Research how to gameify some of the screens by using Expo Go
+ 
+Esha Kumar: 	10 hours
+    Tasks completed:
+	- Debugged screens and implemented the lobby
+	- Worked on organizing frontend on github
+	- Used Loveable and expo to make the screens organized and set up
+	- Updated the code for some of the screens in progress as we debug
+	- Worked on making interactive screens
+    Tasks for next week:
+	- Finish up the screens and add all the elements
+	- Research how to best integrate after front end is built fully
+
+Sai Neethu Bonagiri: 	10 hours
+    Tasks completed:
+	- Implemented the event search functionality, including filters for query, location, date_from, and date_to.
+	- Integrated search logic in routes/events.py
+	- Addressed migration issues and ensured that changes in the models were properly reflected in the database schema
+	- Verified the event search functionality using test_search.py, ensuring that the filters (query, location, date range) work correctly.
+	- Debugged and fixed the location filtering issue by aligning database values to return accurate results.
+
+    Tasks for next week:
+	- Commit and push the final changes to GitHub.
+	- Continue thorough testing to ensure no regressions in the event search functionality.
+	- Resolve any merge conflicts before integrating changes with the main branch.
+	- Collaborate with the frontend team to align backend functionality with their requirements for integration.
+
+Patrick:	10 hours
+    Tasks completed:
+	-Weekly back-end planning w/ Neethu
+	-Debugged and fixed initial leveling system test
+	-Created additional test for leveling system - test_xp_system.py
+	-Utilized and learned more about proper use of flask migrate
+	-Finished setting up new branch structure
+	-Added detailed comments to some existing code for team clarity
+	-Started a guides and tips document for team to reference
+
+    Tasks for next week:
+	-Integrate leveling system into feature/backend-main branch 
+	-Determine w/ frontend most necessary features so we can plan out future testing
+	-Finish create/join events feature
+	-Determine proper reward system based upon leveling
