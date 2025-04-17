@@ -36,14 +36,6 @@ def initialize_levels():
 
 def initialize_loot_box_types():
     """Initialize default loot box types"""
-    # First, check if the table exists
-    from sqlalchemy import inspect
-    
-    inspector = inspect(db.engine)
-    if 'loot_box_types' not in inspector.get_table_names():
-        print("loot_box_types table doesn't exist yet - skipping initialization")
-        return
-    
     loot_box_types = [
         {
             "name": "Tier 1 Loot Box",
@@ -87,14 +79,6 @@ def initialize_loot_box_types():
     
 def initialize_current_semester():
     """Initialize the current semester if none exists"""
-
-    from sqlalchemy import inspect
-    
-    inspector = inspect(db.engine)
-    if 'semesters' not in inspector.get_table_names():
-        print("semesters table doesn't exist yet - skipping initialization")
-        return
-    
     current_semester = Semester.get_current_semester()
     
     if not current_semester:
