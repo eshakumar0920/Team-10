@@ -1,0 +1,59 @@
+Week: 03.28.25 - 04.04.25
+Team leader: Sai Neethu Bonagiri
+ 
+Sai Neethu Bonagiri: 10 hours
+  Tasks completed:
+	    - Team leader
+	    - Debugged the Verify function in the authenticaton(changed the responnse format that is being sent)
+	    - Researched and outlined the necessary steps for authentication integration
+		- Identified what steps the frontend and backend teams need to take.
+	    - Started on API documentation and register, login endpoints for the frontend integration
+            - Collaborated with the frontend team to align on how to integrate the backend APIs with Supabase authentication
+            - Discussed token usage for route protection and requested teammate to research further
+	    - Helped/discussed on identifying which backend routes(e.g., create event) may require protection using access token
+  Tasks for next week:
+	    - Provide complete API documentation and testing steps for the frontend team
+	    - Coordinate with frontend team during integration and testing. 
+	    - Work on protected route implementation logic using access token (as needed)
+	    	
+ 
+Esha Kumar: 	10 hours
+  Tasks completed:
+	  - Connected the frontend to Supabase.
+	  - Read/Write access to analytics logs, auth configurations, SSO providers, Postgres settings, SQL snippets, SSL enforcement, and TypeScript schema.
+	  - Read access to custom and vanity domains.
+	  - Read/Write access to edge functions, environments/branches, metadata, network restrictions/bans, PostgREST settings, API keys, secrets, pgsodium configs, and storage.
+	  - Read access to the organization and its members.
+  Tasks for next week:
+  	  - Finish making the scripts for the features and functionality
+          - Work with backend to add the specific APIs and storing the data
+	  - Figure out how to use Supabase to store everything and be able to demo later.
+
+Sophia O'Malley: 	10 hours
+ Tasks completed:
+	- Researched how to integrate frontend and backend using Supabase
+	- Made a few adujustments to the frontend
+	- Worked and debugged the Leaflet.js map 
+	- Helped connect Supabase to the fronend
+	- Made a few adjustments to the frontend UI for better responsiveness
+
+  Tasks for next week:
+	    - Continue debugging Leaflet.js API (focus on user location and dynamic markers)
+	    - Collaborate with backend teammate to streamline data flow between components
+	    - Meet with backend team to align on any changes to API responses
+
+Patrick:	8 hours
+  Tasks completed:
+	-Tested and debugged features of the leveling system and rewards system
+	-Utilized unittest module to create tests
+	-Created test_event_db, a separate DB from the development DB that can be utilized for testing
+	-Updated shared doc w/ Testing tab
+		-Reference point for current status of features
+		-Guides and Tips for running tests
+	-Research modules and techs for full integration testing
+  Tasks for next week:
+	-Work with Neethu to eliminate any backend integration conflicts as they appear
+	-Collaborate w/ frontend to begin Integration Testing
+	-Debug full stack integration issues as they appear
+	-Fine-tune the gamified user retention features
+	-Determine feasiblity of stretch goals if possible and begin their implementation

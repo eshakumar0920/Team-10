@@ -26,3 +26,78 @@ Team Leader: Patrick
     -Continue to add tasks to Jira board to plan ahead
     -Add bullet points on future Meeting Minutes
     -Create separate directory (called Documents) for Meeting Minutes and Weekly Progress Reports
+
+Week 3 - 2.28.25
+Attendees: TA Thenn, Team 10 (entire team)
+Note Taker: Sophia
+Team Leader: Patrick
+  Comments:
+    - Format for presenting:
+    - Tasks done in the past few weeks
+    - High level overview
+    - Research: Show him how you're researching (ex: playing around with an API and showing the input & output)
+    - at the end show him the progress report
+    - Ngrok VM frontend and backend simultaneously 
+    - Maybe use UTD virtual machine (runs nonstop, free, setup infrastructure)
+    - Research postgres sql commands
+    - Installing an emulator like Android studio, XCode, or local machine for testing out application
+    - Update in proposal plan from React to React Native
+    - MapBox open source map API for map screen
+  TODO:
+    - Middle of next week send TA message on virtual machine decision
+    - Show database tables by next week
+    - Upload draw.io diagrams to github
+    - Work 7- 10 hrs closer to 8hrs
+
+Week 4 - 3.07.25
+  Attendees: Professor Alagar, TA Thenn, Team 10 (entire team)
+  Note Taker: Esha
+  Team Leader: Sophia 
+
+  TO DO:
+    - Work 10 hours
+    - Set up the database and add more information
+    - Front end move to react native locally
+    - Have more to demo next time
+
+Week 5 - 03.14.25
+  Attendees: TA Thenn, Team 10 (entire team)
+  Note Taker: Esha
+  Team Leader: Sai Neethu Bonagiri
+  Comments:
+    - Need to finalize frontend screens based on Figma designs to ensure smooth integration.
+    - Look into loveable for more features
+    - Descision on authentication: Flask login vs Firebase(Firebase preferred), but also consider Auth0 and Supabase
+    - QR code check-in system similar to the UTD app - need to finalize approach
+    - Ensure search filter functionality is not case-senstive. 
+    - Need to plan the leveling system(25 levels) and determine how it will display.
+    - Consistent Jira updates required. 
+  
+  TO DO: 
+    - Create remaining screens based on Figma designs.
+    - Integrate Loveable with ExpoGo.
+    - Implement 25 levels for students based on event attendance.
+    - Set up a QR code check-in system(or research about it)
+    - Sketch/design the leveling system screen.
+    - Implement event creation and sorting by category
+    - Ensure search functionality is not case-sensitive. 
+    - Decide between Flask login, Firebase(preferred), Supabase, or Auth0
+    - Update Jira Weekly.
+
+Week 6 - 03.28.25
+  Attendees: Professor Alagar, TA Thenn, Team 10 (entire team)
+  Note Taker: Sophia
+  Team Leader: Sai Neethu Bonagiri
+  Comments:
+    - Discussion on working through any remaining features, after finishing the tasks ahead of schedule
+    - Anything left unfinished by the end of the semester can be labeled as "work to be continued" for future reference. 
+    - Focus on any additional features that can be added if the teams finish their current tasks early. These can be explored further if time permits. 
+  
+  TO DO: 
+    - Test authentication, event creation, and leveling systems to ensure everything works seamlessly
+    - Continue implementation in the backend
+    - Ensure all screens are final on the frontend, and work on integration with backend
+    - Test and fine tune level syestem for users.
+    - Explore any new features or improvements for the app.
+
+
