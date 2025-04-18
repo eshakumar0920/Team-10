@@ -25,12 +25,14 @@ Sophia O'Malley: 	12+ hours
 	- Collaborated with Esha on what stretch goals we could implement
 	- Contributed to fixing submodule issues related to gatherly-mapster
 	- Verified submodule functionality and updated the local environment accordingly
+	- Assisted with setting up the backend database connection
+	- Tested application flow after merging front-end and back-end components
     Tasks for next week:
 	- Begin implementing stretch goals
 	- Prepare for our demo
 	- Work on the report
-
-
+	- Review and clean up code for submission (remove unused imports, organize files)
+	- Confirm deployment steps
 Sai Neethu Bonagiri: 	12+ hours
 	Tasks completed:
 	- Integrated frontend with backend API for authentication using Supabase + Flask.
