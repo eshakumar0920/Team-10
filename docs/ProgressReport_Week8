@@ -1,12 +1,22 @@
 Week: 04.11.25 - 04.18.25
-Team leader: 
+Team leader: Esha Kumar
  
-Esha Kumar: 12+ hours
-    Tasks completed:
+Esha Kumar:   12+ hours 
+	Tasks completed:
 	- Team leader
-	- 
-    Tasks for next week:
-	- 
+	- Worked on integrating frontend and backend components
+	- Connected backend with frontend locally for testing and development
+	- Worked on calling routes and aligning with Supabase naming conventions
+	- Researched and started setting up Supabase edge functions for backend operations
+	- Finalized and implemented authentication setup
+	- Assisted in debugging issues related to route conversion and integration
+	Tasks for next week:
+	- Converted existing routes to Supabase routes
+	- Updated Supabase schema to support integration (work in progress)
+	- Finalize edge functions and route connections
+	- Debug and polish any remaining integration issues
+	- Work on stretch goals if time permits (additional features or enhancements)
+	- Start drafting the final project report and preparing demo materials
  
 Sophia O'Malley: 	12+ hours
     Tasks completed:
@@ -19,6 +29,8 @@ Sophia O'Malley: 	12+ hours
 	- Begin implementing stretch goals
 	- Prepare for our demo
 	- Work on the report
+
+
 Sai Neethu Bonagiri: 	12+ hours
 	Tasks completed:
 	- Integrated frontend with backend API for authentication using Supabase + Flask.
