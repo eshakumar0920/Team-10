@@ -19,8 +19,14 @@ Sai Neethu Bonagiri: 	12+ hours
     Tasks for next week:
 	- 
 
-Patrick:	10+ hours
+Patrick:  11+ hours
     Tasks completed:
-	- 
+	- Resolved merge conflicts incurred when integrating front and back-end
+	- Research and began implementing QR code verification for events
+	- Created spreadsheet to compare DB schemas (PostgreSQL v. Supabase) to assist with integration
+	- Contributed to Integration planning, testing, and debugging during in-team meeting
+	- Discussed Project demo ideas and their feasibility 
     Tasks for next week:
-	- 
+	- Assist team with integrating and updating backend routes as necessary
+	- Upon successfully integrating main application features begin testing methods to demo the project
+	- If time permits consider attempting stretch goals (ChatBot, App store, etc.)
