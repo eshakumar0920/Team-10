@@ -101,3 +101,34 @@ Week 6 - 03.28.25
     - Explore any new features or improvements for the app.
 
 
+Week 7 - 04.04.25
+Attendees: Professor Alagar, TA Thenn, Team 10 (entire team)
+Note Taker: Sophia
+Team Leader: Esha Kumar
+Comments:
+  - When testing Supabase, cover all error cases for verification
+  - Front end has an app‑router; components must always check user validity
+  - Green indicators for XP and leaderboard should be visible
+  - User levels need to be persisted in the database
+  - Review pgAdmin’s schema dialog for guidance on table design:
+  - Follow ER‑model concepts to simplify and normalize database tables
+  - Final report due May 9 or May 11; prepare an initial draft before the demo and add more sections as needed
+
+TO DO: 
+  - Go over Leaflet.js documentation and examples
+  - Create the gaming screen prototype
+  - Apply ER‑based database design to simplify table structure
+
+
+Week 8: 04.11.25
+Attendees: Professor Alagar, TA Thenn, Team 10 (entire team)
+Note Taker: Sophia
+Team Leader: Esha Kumar
+Comments:
+  - Need a commercial‑style demo to effectively pitch our product
+  - Plan and produce a short video walkthrough for the demo
+
+TO DO: 
+  - Research how to package/make the app downloadable for live demo
+  - Add drop‑shadows to the “verification sent” pop‑up to make it more prominent
+  - Implement “current location” display on the map
