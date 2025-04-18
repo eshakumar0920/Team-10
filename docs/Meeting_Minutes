@@ -127,8 +127,19 @@ Team Leader: Esha Kumar
 Comments:
   - Need a commercial‑style demo to effectively pitch our product
   - Plan and produce a short video walkthrough for the demo
+  - Need to add categories to the event‑creation process
 
 TO DO: 
   - Research how to package/make the app downloadable for live demo
   - Add drop‑shadows to the “verification sent” pop‑up to make it more prominent
   - Implement “current location” display on the map
+  - Implement QR‑code generation and award XP upon correct scan
+
+Stretch Goals:
+  - Have a complete app available for download on a real phone for the demo
+  - Prepare both an emulator and a physical device for showcasing
+
+Demo Plan:
+  - 10 min to showcase project
+     - A few creative slides plus live product demo
+  - 5 min for audience questions
