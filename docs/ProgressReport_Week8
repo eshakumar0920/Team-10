@@ -15,9 +15,17 @@ Sophia O'Malley: 	12+ hours
 	- 
 Sai Neethu Bonagiri: 	12+ hours
 	Tasks completed:
-	- 
+	- Integrated frontend with backend API for authentication using Supabase + Flask.
+	- Reviewed and understood the app route structure (App.tsx) and route protection (ProtectedRoute.tsx).
+	- Resolved merge conflicts from previous week
+	- Worked with team in creating centralized API service in services/api.ts to organize backend calls.
+	- Configured .env for frontend and tested authentication flow.
+	- Spent significant time on integration and researching about it .
     Tasks for next week:
-	- 
+	- Continue and wrap up integration.
+	- If time permits work on stretch goals
+	- Prepare and rehearse our end‑to‑end demo.
+	- Draft and polish the official progress report. 
 
 Patrick:  11+ hours
     Tasks completed:
