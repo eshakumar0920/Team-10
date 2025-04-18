@@ -9,7 +9,9 @@ import os
 
 def create_app(config_name='dev'):
     app = Flask(__name__)
-    CORS(app)
+    #CORS(app)
+    CORS(app, origins=["http://localhost:8080"])
+
     
     # Load config
     app.config.from_object(config_by_name[config_name])
