@@ -139,7 +139,23 @@ Stretch Goals:
   - Have a complete app available for download on a real phone for the demo
   - Prepare both an emulator and a physical device for showcasing
 
-Demo Plan:
-  - 10 min to showcase project
-     - A few creative slides plus live product demo
-  - 5 min for audience questions
+
+
+Week 9: 04.18.25
+Attendees: TA Thenn, Team 10 (entire team)
+Note Taker: Sophia
+Team Leader: Esha Kumar
+Comments: 
+  - The demo should be treated like a commercial showcasing the app's key features in a polished and concise manner.
+  - It's recommended to pre-record the demo as screen-sharing live during the demo may be difficult
+  - The live app should be used for the demo rather than an emulator to show the full functionality.
+  - The current progress exceeds expectations, but it's important to ensure all code is pushed to the main branch.
+  - Emphasized that the status report, Jira, and meeting minutes need to be up-to-date with proper metadata. 
+
+TODO:
+  - Research best practices for demoing our app effectively.
+  - Prepare a 3-4 slide slideshow, including architectural diagrams.
+  - Pre-record the demo to ensure smooth delivery.
+  - Allocate the last 2 minutes of the demo for a Q&A session.
+  - Ensure all code is pushed to the main branch.
+  - Keep the status report and Jira board up to date, with proper metadata. 
