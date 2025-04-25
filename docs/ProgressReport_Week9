@@ -20,9 +20,23 @@ Patrick:  10+ hours
 
 Sai Neethu Bonagiri: 	12+ hours
 	Tasks completed:
-	- 
+	- Resolved the integration API calls issues on the authentication, events,and homepage. 
+	- Ensured that all API calls are functioning correctly.
+	- Modified api.ts to properly call the backend without issues. 
+	- Fixed API call issues in Index.tsx and Events.tsx.
+	- Integrated Meetups.tsx and MeetupLobby.tsx to work with the backend event API.
+	- Addressed naming convention inconsistencies between meetups and events.
+ 	- Resolved login issues that occurred while creating meetups.
+	- Debugged and fixed various issues during testing.
+	- Participated in discussions about the project demo format with the team.
+	- Focused heavily on ensuring the frontend correctly communicates with the backend.	
+	- Discussed with team on how to publish our app. 
     Tasks for next week:
-	- 
+	- Finalize integration and perform thorough testing.
+	- Complete project demo slides and collaborate on the project report.
+	- Help finish the demo video with the team.
+	- Prepare for the demo day with the team.
+	- Install the mobile app on personal devices.
 
 Esha Kumar:   10 hours 
 	Tasks completed:
