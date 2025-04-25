@@ -47,8 +47,10 @@ Esha Kumar:   10 hours 
   	- Fixed the database to reflect our PostGres and worked on connecting our APIs and Routes
     Tasks for next week:
  	- Finalize Supabase route conversion and schema updates  
-  	- Complete edge function integration and polish any remaining bugs  
+  	- Complete edge function integration and polish any remaining bugs
+	- Finishing looking at last minute UI fixes
   	- Work on Demo Preparation/Report
+
  
 Sophia O'Malley: 	12+ hours
     Tasks completed:
