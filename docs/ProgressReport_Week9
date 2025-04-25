@@ -40,15 +40,15 @@ Sai Neethu Bonagiri: 	12+ hours
 
 Esha Kumar:   10 hours 
 	Tasks completed:
-  - Contributed to backend/frontend integration discussions and aligned components for the upcoming demo  
-  - Assisted with debugging integration issues, including authentication/meetup and route conversion  
-  - Participated in planning and reviewing the demo structure with the team  
-  - Supported edge function setup and ensured naming conventions were followed across Supabase routes
-  - Fixed the database to reflect our PostGres and worked on connecting our APIs and Routes
+  	- Contributed to backend/frontend integration discussions and aligned components for the upcoming demo  
+  	- Assisted with debugging integration issues, including authentication/meetup and route conversion  
+  	- Participated in planning and reviewing the demo structure with the team  
+  	- Supported edge function setup and ensured naming conventions were followed across Supabase routes
+  	- Fixed the database to reflect our PostGres and worked on connecting our APIs and Routes
 	Tasks for next week:
-  - Finalize Supabase route conversion and schema updates  
-  - Complete edge function integration and polish any remaining bugs  
-  - Work on Demo Preparation/Report
+ 	- Finalize Supabase route conversion and schema updates  
+  	- Complete edge function integration and polish any remaining bugs  
+  	- Work on Demo Preparation/Report
  
 Sophia O'Malley: 	12+ hours
     Tasks completed:
