@@ -159,3 +159,19 @@ TODO:
   - Allocate the last 2 minutes of the demo for a Q&A session.
   - Ensure all code is pushed to the main branch.
   - Keep the status report and Jira board up to date, with proper metadata. 
+
+Week 10: 04.25.25
+Attendees: Prof. Alagar, TA Thenn, Team 10 (entire team)
+Note Taker: Sophia
+Team Leader: Patrick Guinn
+Comments: 
+  - The app looks nice on mobile device
+  - Depending on comfortability an emulator or video could also be recorded to showcase the app features
+  - Live demo of the app is preferred over a screen recording
+  - Demo should be product focused, slides presentation is secondary
+  - Project report will be due 5/11
+
+TODO:
+  - Prepare and make practice demo presentations as team
+  - Research and consider utilizing ngrok to help expose the local server to the public when using app on mobile
+  - Begin working on Project Report
